@@ -4,42 +4,41 @@ form{
     /* padding: 0px 20px 20px 20px; */
     margin-left: 400px;
     margin-top: 150px;
-   /* background-image: url('src/assets/img/photo.jpg'); */
+
     }
     .username{
         width: 20px;
-        margin-left: 35%;
-        margin-top: 60px;
+        margin-left: 50%;
+        margin-top: -300px;
     }
     .label1{
         width: 20px;
-        margin-left: 35%;
+        margin-left: 50%;
         margin-top: 10px;
     }
     .pass{
         width: 20px;
-        margin-left: 35%;
+        margin-left: 50%;
         margin-top: 20px;
     }
     .login{
         width: 20px;
-        margin-left: 35%;
+        margin-left: 50%;
         margin-top: 10px;
        
     }
     .remember{
         margin-top: 10px;
-        margin-left: 255px;
+        margin-left: 350px;
     }
     .forgot-password{
         margin-top: 10px;
-        margin-left: 265px;
+        margin-left: 365px;
     }
     .background-IMG {
         background-image: url('src/assets/img/photo.jpg');
-        width: 400px;
-        height: 100px;
-        margin-top: 60px;
-        margin-left: 35px;
-        size: 10px;
+        width: 490px;
+        height: 400px;
+        margin-left: -300px;
+        margin-top: -140px;
       }
