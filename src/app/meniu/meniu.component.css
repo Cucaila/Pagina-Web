@@ -4,8 +4,6 @@
     background-color: rgb(130, 211, 211);
     width: 20%;
     height: 800px;
-    
-
   }
   
   /* Style the buttons that are used to open the tab content */
@@ -40,4 +38,11 @@
     border-left: none;
     height: 300px;
     display: none;
+  }
+  .formAddMedic{
+    width: 20%;
+    height: 40;
+    border: 3px solid;
+    /* padding: 0px 20px 20px 20px; */
+    margin-left: 600px;
   }

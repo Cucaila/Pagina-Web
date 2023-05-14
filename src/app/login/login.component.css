@@ -4,7 +4,7 @@ form{
     /* padding: 0px 20px 20px 20px; */
     margin-left: 400px;
     margin-top: 150px;
-
+    
     }
     .username{
         width: 20px;
@@ -21,11 +21,18 @@ form{
         margin-left: 50%;
         margin-top: 20px;
     }
+    .label2{
+        width: 20px;
+        margin-left: 50%;
+        margin-top: 10px;
+    }
     .login{
         width: 20px;
         margin-left: 50%;
         margin-top: 10px;
-       
+    }
+    .button{
+        background-color: burlywood;
     }
     .remember{
         margin-top: 10px;
@@ -41,4 +48,4 @@ form{
         height: 400px;
         margin-left: -300px;
         margin-top: -140px;
-      }
+    }
