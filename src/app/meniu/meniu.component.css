@@ -48,9 +48,9 @@
 
   }
   .formAddPacient{
-    width: 40%;
+    width: 30%;
     height: 600px;
-    border: 3px solid;
+    border: 1px solid;
     margin-left: 600px;
   }
   .form1Fname{
@@ -67,37 +67,43 @@
   .form2Fname{
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 40px;
+    margin-left: 100px;
   }
   .form2Lname{
     margin-bottom: 20px;
-    margin-left: 40px;
+    margin-left: 100px;
   }
   .form2Varsta{
     margin-bottom: 20px;
-    margin-left: 40px;
+    margin-left: 100px;
   }
   .form2Cnp{
     margin-bottom: 20px;
-    margin-left: 40px;
+    margin-left: 100px;
   }
   .form2Adr{
     margin-bottom: 20px;
-    margin-left: 40px;
+    margin-left: 100px;
   }
   .form2Profesie{
     margin-bottom: 20px;
-    margin-left: 40px;
+    margin-left: 100px;
   }
   .form2LocMunca{
     margin-bottom: 20px;
-    margin-left: 40px;
+    margin-left: 100px;
   }
   .form2CodPat{
     margin-bottom: 20px;
-    margin-left: 40px;
+    margin-left: 100px;
   }
   .form2NrTel{
     margin-bottom: 20px;
-    margin-left: 40px;
+    margin-left: 100px;
+  }
+  .FormAddTratment{
+    width: 30%;
+    height: 600px;
+    border: 1px solid;
+    margin-left: 600px;
   }

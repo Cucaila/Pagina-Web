@@ -4,11 +4,11 @@
     <button class="tablinks" onmouseover="openCity(event, 'Tratment')">Add tratment</button>
     <button class="tablinks" onmouseover="openCity(event, 'Pacients')">Pacients list</button>
     <button class="tablinks" onmouseover="openCity(event, 'Medics')">Medics list</button> -->
-    <button class="tablinks" (click)="showForm('form1')">Add medic</button>
-    <button class="tablinks" (click)="showForm('form2')">Add pacient</button>
-    <button class="tablinks" (click)="showForm('form3')">Add tratment</button>
-    <button class="tablinks" (click)="showForm('form4')">Pacients list</button>
-    <button class="tablinks" (click)="showForm('form5')">Medics list</button>
+    <button class="tablinks" (click)="showForm('form1')">Adaugre medic</button>
+    <button class="tablinks" (click)="showForm('form2')">Adaugare pacient</button>
+    <button class="tablinks" (click)="showForm('form3')">Adaugare tratament</button>
+    <button class="tablinks" (click)="showForm('form4')">Lista de pacienti</button>
+    <button class="tablinks" (click)="showForm('form5')">Lista de medici</button>
     
   </div>
 
@@ -28,10 +28,10 @@
   </form>
 
   <form  class="formAddPacient"  *ngIf="showForm2">
-    
+
     <div class="form2Fname">
       <div>
-        <label for="Fname">First Name: </label>
+        <label for="Fname">Nume: </label>
       </div>
      <div>
       <input id="firstnamef2" type="text">
@@ -39,42 +39,96 @@
     </div>
 
     <div class="form2Lname">
-      <label for="Lname">Last Name: </label>
-      <input id="lastnamef2" type="text">
+      <div>
+        <label for="Lname">Prenume: </label>
+      </div>
+      <div>
+        <input id="lastnamef2" type="text">
+      </div>
     </div>
+
     <div class="form2Varsta">
-      <label for="varsta">Varsta: </label>
-      <input id="varstaf2" type="number">
+      <div>
+        <label for="varsta">Varsta: </label>
+      </div>
+      <div>
+        <input id="varstaf2" type="number">
+      </div>
     </div>
+
     <div class="form2Cnp">
-      <label for="CNP">CNP: </label>
-      <input id="cnpf2" type="text">
+      <div>
+        <label for="CNP">CNP: </label>
+      </div>
+      <div>
+        <input id="cnpf2" type="text">
+      </div>
     </div>
+
     <div class="form2Adr">
-      <label for="adresa">Adresa: </label>
-      <input id="adresaf2" type="text">
+      <div>
+        <label for="adresa">Adresa: </label>
+      </div>
+      <div>
+        <input id="adresaf2" type="text">
+      </div>  
     </div>
+
     <div class="form2Profesie">
-      <label for="profesie">Profesie: </label>
-      <input id="profesief2" type="text">
+      <div>
+        <label for="profesie">Profesie: </label>
+      </div>
+      <div>
+        <input id="profesief2" type="text">
+      </div>    
     </div>
+
     <div class="form2LocMunca">
-      <label for="loc_munca">Loc de munca: </label>
-      <input id="loc_munca_f2" type="text">
+      <div>
+        <label for="loc_munca">Loc de munca: </label>
+      </div>
+      <div>
+        <input id="loc_munca_f2" type="text">
+      </div>    
     </div>
+
     <div class="form2NrTel">
-      <label for="nr_tel">Numar de telefon: </label>
-      <input id="nr_tel_f2" type="text">
+      <div>
+        <label for="nr_tel">Numar de telefon: </label>
+      </div>
+      <div>
+        <input id="nr_tel_f2" type="text">
+      </div>   
     </div>
+
     <div class="form2CodPat">
-      <label for="cod_pat">Codul patului: </label>
-      <input id="cod_pat_f2" type="text">
+      <div>
+        <label for="cod_pat">Codul patului: </label>
+      </div>
+      <div>
+        <input id="cod_pat_f2" type="text">
+      </div>     
     </div>
   </form>
 
-  <form *ngIf="showForm3">
-    <label for="name">Name: </label>
-    <input id="name" type="text">
+  <form class="FormAddTratment" *ngIf="showForm3">
+    <div>
+      <div>
+        <label for="name">Nume medicament: </label>
+      </div>
+      <div>
+        <input id="name" type="text">
+      </div>   
+    </div>
+    <div>
+      <div>
+        <label for="cant">Administrare: </label>
+      </div>
+      <div>
+        <input id="cant" type="text"> 
+      </div>
+    </div>
+    
   </form>
 
   <form *ngIf="showForm4">
