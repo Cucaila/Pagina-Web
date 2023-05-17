@@ -50,6 +50,7 @@
     <input type="number">
  </div>
 </div>
+<button type="submit" class="button">Submit</button>
   </form>
 
   <form  class="formAddPacient"  *ngIf="showForm2">
@@ -136,13 +137,15 @@
         <input type="text">
       </div>     
     </div>
+
+    <button type="submit" class="button">Submit</button>
   </form>
 
   <form class="FormAddTratment" *ngIf="showForm3">
     <div class="titlu">
       Va rugam completati datele urmatoare:
     </div>
-    <div>
+    <div class="test">
       <div>
         <label>Nume medicament: </label>
       </div>
@@ -168,7 +171,12 @@
         <input type="text">
       </div>
     </div>
-    
+    <div class="test">
+      <label for="com">Comanda directa: </label>
+      <input type="checkbox">
+    </div>
+
+    <button type="submit" class="but">Submit</button>
   </form>
 
   <form *ngIf="showForm4">
