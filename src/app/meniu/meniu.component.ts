@@ -20,4 +20,8 @@ export class MeniuComponent {
     this.showForm4 = formName === 'form4';
     this.showForm5 = formName === 'form5';
   }
+
+  showTratament(){
+    
+  }
 }
