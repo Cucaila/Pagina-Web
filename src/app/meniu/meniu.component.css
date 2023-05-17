@@ -40,15 +40,64 @@
     display: none;
   }
   .formAddMedic{
-    width: 20%;
-    height: 40;
+    width: 30%;
+    height: 400px;
     border: 3px solid;
     /* padding: 0px 20px 20px 20px; */
     margin-left: 600px;
+
   }
-  .showForm2{
-    width: 20%;
-    height: 40;
+  .formAddPacient{
+    width: 40%;
+    height: 600px;
     border: 3px solid;
     margin-left: 600px;
+  }
+  .form1Fname{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .form1Lname{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .form1dep{
+    margin-bottom: 20px;
+  }
+  .form2Fname{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+  }
+  .form2Lname{
+    margin-bottom: 20px;
+    margin-left: 40px;
+  }
+  .form2Varsta{
+    margin-bottom: 20px;
+    margin-left: 40px;
+  }
+  .form2Cnp{
+    margin-bottom: 20px;
+    margin-left: 40px;
+  }
+  .form2Adr{
+    margin-bottom: 20px;
+    margin-left: 40px;
+  }
+  .form2Profesie{
+    margin-bottom: 20px;
+    margin-left: 40px;
+  }
+  .form2LocMunca{
+    margin-bottom: 20px;
+    margin-left: 40px;
+  }
+  .form2CodPat{
+    margin-bottom: 20px;
+    margin-left: 40px;
+  }
+  .form2NrTel{
+    margin-bottom: 20px;
+    margin-left: 40px;
   }
