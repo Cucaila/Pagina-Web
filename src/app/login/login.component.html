@@ -3,27 +3,27 @@
   <div class="background-IMG">
   </div>
   <div class="username">
-    <label>Username</label>
+    <label>Nume utilizator:</label>
   </div>
     <div class="label1">
-      <input type="text">
+      <input type="email" [(ngModel)]="username">
     </div>
   <div class="pass">
-    <label>Password</label>
+    <label>Parola:</label>
     </div>
     <div class="label2">
-      <input type="password">
+      <input type="password" [(ngModel)]="password">
     </div>
   <div class="remember">
 <input type="checkbox" name="remember">
 <label>
-   Remember Me
+   
   </label>
   </div>
   <div class="forgot-password">
 Forgot password?
   </div>
   <div class="login">
-  <button type="submit" class="button" (click)="goToMenu()">Login</button>
+  <button type="submit" class="button" (click)="login()">Login</button>
   </div>
 </FORM>

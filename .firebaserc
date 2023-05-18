@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ip-project-eef9f": {
+      "hosting": {
+        "Pagina-Web": [
+          "ip-project-eef9f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ip-project-eef9f"
+  }
+}

@@ -1,16 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+username: string='';
+password: string='';
 
-  constructor(private router: Router){}
+ngOnInit(): void{}
 
-  goToMenu(){
-    this.router.navigate(['login/meniu']);
+constructor(private auth: AuthService){}
+
+login(){
+  if(this.username==''){
+    alert('Introduceti numele de utilizator!');
+    return;
   }
+  if(this.password==''){
+    alert('Introduceti parola!');
+    return;
+  }
+
+  this.auth.login(this.username, this.password);
+  this.username='';
+  this.password='';
+}
+
+  // constructor(private router: Router){}
+
+ 
+  // goToMenu(){
+  //   this.router.navigate(['login/meniu']);
+  // }
 }
