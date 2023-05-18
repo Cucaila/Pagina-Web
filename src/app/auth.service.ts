@@ -13,10 +13,30 @@ export class AuthService {
   login(username: string, password: string){
     this.fireauth.signInWithEmailAndPassword(username, password).then(()=>{
         localStorage.setItem('token', 'true');
-        this.router.navigate(['/login/meniu'])
+        this.router.navigate(['/login/meniu']);
     }, err=>{
         alert('Esti prost');
         this.router.navigate(['/login']);
+    })
+  }
+
+  //register method
+  register(username: string, password: string){
+    this.fireauth.createUserWithEmailAndPassword(username, password).then(()=>{
+        this.router.navigate(['/login/meniu']);
+    }, err=>{
+        alert('Esti prost');
+        this.router.navigate(['/login']);
+    })
+  }
+
+  //sign out
+  logout(){
+    this.fireauth.signOut().then(()=> {
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }, err=>{
+      alert('Esti prost');
     })
   }
 }
