@@ -13,7 +13,7 @@
     
   </div>
 
-  <form class="formAddMedic" *ngIf="showForm1">
+  <form [formGroup]="contactForm" class="formAddMedic" *ngIf="showForm1">
     <div class="titlu">
       Va rugam completati datele urmatoare:
     </div>
@@ -22,16 +22,18 @@
         <label>Nume: </label>
       </div>
       <div class="test2">
-        <input type="text">
+        <input type="text" formControlName="nume">
       </div>
     </div>
+
+    
 
    <div class="test">
     <div>
       <label>Prenume: </label>
     </div>
     <div class="test2">
-      <input type="text">
+      <input type="text" formControlName="prenume">
     </div>
    </div>
 
@@ -40,7 +42,7 @@
       <label>Departament: </label>
     </div>
     <div class="test2">
-      <input type="text">
+      <input type="text" formControlName="departament">
     </div>
    </div>
 <div class="test">
@@ -48,11 +50,12 @@
     <label>Varsta: </label>
  </div>
  <div class="test2">
-    <input type="number">
+    <input type="number" formControlName="varsta">
  </div>
 </div>
-<button type="submit" class="button">Submit</button>
-  </form>
+<button type="reset" [disabled]="contactForm.invalid" class="button" (click)="submitAddMedic(contactForm.value)">Submit</button>
+<p *ngIf="isSubmit" class="submitMedic" >{{ submitMessage }}</p>
+</form>
 
   <form  class="formAddPacient"  *ngIf="showForm2">
     <div class="titlu">
