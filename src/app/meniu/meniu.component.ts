@@ -1,11 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Firestore, collectionData, collection, CollectionReference, DocumentData, addDoc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, CollectionReference, addDoc, QuerySnapshot, doc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs/internal/Observable';
+import { Medic } from '../medic.model';
+import { map } from 'rxjs/internal/operators/map';
 
 @Component({
   selector: 'app',
   templateUrl: './meniu.component.html',
   styleUrls: ['./meniu.component.css']
+})
+
+@Injectable({
+  providedIn: 'root',
 })
 export class MeniuComponent implements OnInit {
   showForm1 = false;
@@ -19,8 +26,12 @@ export class MeniuComponent implements OnInit {
   submitMessage='';
 
   private myform!: CollectionReference<any>;
+  medici!: Observable<any[]>;
+  userData!: Observable<any[]>
 
-  constructor(private formBuilder: FormBuilder, private firestore: Firestore){}
+  constructor(private formBuilder: FormBuilder, private firestore: Firestore){
+    this.getDocument();
+  }
 
   showForm(formName: string) {
     this.showForm1 = formName === 'form1';
@@ -43,6 +54,17 @@ export class MeniuComponent implements OnInit {
       departament:[null,Validators.required],
       varsta:[null,[Validators.required]]
     });
+
+  //   this.medici = this.myform.snapshotChanges().pipe(
+  //     map((actions) => {
+  //       return actions.map((a) => {
+  //         const data = a.payload.doc.data() as Medic;
+  //         const id = a.payload.doc.id;
+  //         return { id, ...data };
+  //       });
+  //     })
+  //   );
+  // }
   }
 
   submitAddMedic(value: any){
@@ -75,6 +97,28 @@ export class MeniuComponent implements OnInit {
         console.log(err);
       });
   }
+
+  getDocument(): void {
+    const CollectionInstance = collection(this.firestore, 'medici');
+    collectionData(CollectionInstance)
+    .subscribe(value => {
+      console.log(value)
+    });
+
+    this.userData = collectionData(CollectionInstance);
+  }
+
+  // getMedici(): Observable<any[]> {
+  //   return this.myform.get().pipe(
+  //     map((querySnapshot: QuerySnapshot<Medic>) => {
+  //       const medici: Medic[] = [];
+  //       querySnapshot.forEach((doc) => {
+  //         medici.push(doc.data());
+  //       });
+  //       return medici;
+  //     })
+  //   );
+  // }
 
 
 }

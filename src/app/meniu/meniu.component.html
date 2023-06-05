@@ -201,8 +201,12 @@
   </form>
 
   <form *ngIf="showForm5">
-    <label for="name">Name: </label>
-    <input id="name" type="text">
+    <ul>
+      <li *ngFor="let data of userData |async">
+        Medic 1:
+        <p>{{ data.nume }}</p>
+      </li>
+    </ul>
   </form>
   
   <!-- <div id="Medic" class="tabcontent">
