@@ -29,6 +29,7 @@ export class MeniuComponent implements OnInit {
   private myformPacienti!: CollectionReference<any>;
   pacienti!: Observable<any[]>;
   usrData!: Observable<any[]>
+  contactformPacienti!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private firestore: Firestore){
     this.getDocument();
@@ -59,7 +60,7 @@ export class MeniuComponent implements OnInit {
 
     this.myformPacienti = collection(this.firestore, 'pacienti');
 
-    this.contactForm = this.formBuilder.group({
+    this.contactformPacienti = this.formBuilder.group({
       nume: [null, Validators.required],
       prenume : [null, Validators.required],
       medic : [null, Validators.required],
@@ -111,7 +112,7 @@ export class MeniuComponent implements OnInit {
   submitAddPacient(value: any){
     console.log(value);
  
-    addDoc(this.myform, value)
+    addDoc(this.myformPacienti, value)
     .then(() => {
       this.submitMessage = 'Submitted Successfully!';
       this.isSubmit = true;
@@ -147,6 +148,6 @@ getPacientDocument(): void {
   //   );
   // }
 
-
+  
 }
 

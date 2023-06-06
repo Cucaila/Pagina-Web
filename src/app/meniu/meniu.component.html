@@ -55,7 +55,7 @@
 <p *ngIf="isSubmit" class="submitMedic" >{{ submitMessage }}</p>
 </form>
 
-  <form [formGroup]="contactFormPacienti" class="formAddPacient"  *ngIf="showForm2">
+  <form [formGroup]="contactformPacienti" class="formAddPacient"  *ngIf="showForm2">
     <div class="titlu">
       Va rugam completati datele urmatoare:
     </div>
@@ -125,7 +125,7 @@
         <label>Loc de munca: </label>
       </div>
       <div class="test2">
-        <input type="text" formControlName="loc de munca">
+        <input type="text" formControlName="locDeMunca">
       </div>    
     </div>
 
@@ -134,12 +134,12 @@
         <label>Numar de telefon: </label>
       </div>
       <div class="test2">
-        <input type="text" formControlName="numarde telefon">
+        <input type="text" formControlName="numarDeTelefon">
       </div>   
     </div>
 
 
-    <button type="reset" [disabled]="contactFormPacienti.invalid" class="button" (click)="submitAddPacient(contactFormPacienti.value)">Submit</button>
+    <button type="reset" [disabled]="contactformPacienti.invalid" class="button" (click)="submitAddPacient(contactformPacienti.value)">Submit</button>
     <p *ngIf="isSubmit" class="submitPacient" >{{ submitMessage }}</p>
   </form>
 
