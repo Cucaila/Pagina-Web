@@ -26,8 +26,6 @@
       </div>
     </div>
 
-    
-
    <div class="test">
     <div>
       <label>Prenume: </label>
@@ -212,35 +210,13 @@
     <input id="name" type="text">
   </form>
 
-  <form *ngIf="showForm5">
-    <ul>
-      <li *ngFor="let data of userData |async">
-        Medic 1:
-        <p>{{ data.nume }}</p>
-      </li>
+  <form *ngIf="showForm5" class="showMeds">
+    <ul *ngFor="let data of userData |async">
+        <form class="showMed">
+        <p>Nume: {{ data.nume }}  {{ data.prenume }} </p>
+        <p>Departament: {{ data.departament }} </p>
+        <p>Varsta: {{ data.varsta }} </p>
+        </form>
     </ul>
   </form>
-  
-  <!-- <div id="Medic" class="tabcontent">
-    <h3>Add medic </h3>
-    <p>Please complete the follows information for register a new medic: </p>
-    <div>
-  <div id="Add" class="tabcontent">
-    <h3>Add pacient</h3>
-    <p>Please complete the follows information for register a new pacient: </p>
-  </div>
-  
-  <div id="Tratment" class="tabcontent">
-    <h3>Add tratment </h3>
-    <p>Please complete the follows information for register a new tratment: </p>
-    <div>
-  
-  <div id="Pacients" class="tabcontent">
-    <h3>Pacients lists</h3>
-    <p>Pacients: </p>
-  </div>
-  <div id="Medics" class="tabcontent">
-    <h3>Medics lists</h3>
-    <p>Medics: </p>
-  </div> -->
   

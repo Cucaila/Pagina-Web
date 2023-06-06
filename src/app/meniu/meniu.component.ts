@@ -1,6 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Firestore, collectionData, collection, CollectionReference, addDoc, QuerySnapshot, doc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, CollectionReference, addDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
@@ -24,8 +24,7 @@ export class MeniuComponent implements OnInit {
   submitMessage='';
 
   private myform!: CollectionReference<any>;
-  medici!: Observable<any[]>;
-  userData!: Observable<any[]>
+  userData!: Observable<any[]>;
 
   private myformPacienti!: CollectionReference<any>;
   pacienti!: Observable<any[]>;
@@ -86,23 +85,6 @@ export class MeniuComponent implements OnInit {
   }
 
   submitAddMedic(value: any){
-    console.log(value);
-
-    //vechea sintaxa
-//     this.myform.add(value).then(()=>{this.submitMessage = 'Submitted Successfully!';
-//   })
-//   .catch((err: any)=>{
-// console.log(err);
-//   })
-
-//     this.isSubmit = true;
-//     this.submitMessage='Submitted Succefully!';
-//     setTimeout(()=>{
-//       this.isSubmit=false;
-//     },8000);
-//   }
-
-//noua sintaxa
   addDoc(this.myform, value)
       .then(() => {
         this.submitMessage = 'Submitted Successfully!';
@@ -167,3 +149,4 @@ getPacientDocument(): void {
 
 
 }
+
