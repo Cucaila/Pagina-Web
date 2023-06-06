@@ -1,8 +1,10 @@
-import { CheckboxControlValueAccessor } from "@angular/forms";
 
-export class Tratament {
-    numeMedicament : string = '';
-    administrare : string ='';
-    durataTratament : string ='';
+export interface Tratament {
+    numePacient: string;
+    prenumePacient : string;
+    numeMedicament : string ;
+    administrare : string ;
+    durataTratament : string;
+    comandaDirecta : boolean;
     
 }

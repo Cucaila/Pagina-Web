@@ -53,11 +53,11 @@
     <input type="number" formControlName="varsta">
  </div>
 </div>
-<button type="reset" [disabled]="contactForm.invalid" class="button" (click)="submitAddMedic(contactForm.value)">Submit</button>
+<button type="reset" [disabled]="contactForm.invalid" class="button" (click)="submitAddMedic(contactForm .value)">Submit</button>
 <p *ngIf="isSubmit" class="submitMedic" >{{ submitMessage }}</p>
 </form>
 
-  <form  class="formAddPacient"  *ngIf="showForm2">
+  <form [formGroup]="contactFormPacienti" class="formAddPacient"  *ngIf="showForm2">
     <div class="titlu">
       Va rugam completati datele urmatoare:
     </div>
@@ -66,7 +66,7 @@
         <label>Nume: </label>
       </div>
      <div class="test2">
-      <input type="text">
+      <input type="text" formControlName="nume">
      </div>
     </div>
 
@@ -75,16 +75,23 @@
         <label>Prenume: </label>
       </div>
       <div class="test2">
-        <input type="text">
+        <input type="text" formControlName="prenume">
       </div>
     </div>
-
+    <div class="test">
+      <div>
+        <label>Medic: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="medic">
+      </div>
+    </div>
     <div class="test">
       <div>
         <label>Varsta: </label>
       </div>
       <div class="test2">
-        <input type="number">
+        <input type="number" formControlName="varsta">
       </div>
     </div>
 
@@ -93,7 +100,7 @@
         <label>CNP: </label>
       </div>
       <div class="test2">
-        <input type="text">
+        <input type="text" formControlName="cnp">
       </div>
     </div>
 
@@ -102,7 +109,7 @@
         <label>Adresa: </label>
       </div>
       <div class="test2">
-        <input type="text">
+        <input type="text" formControlName="adresa">
       </div>  
     </div>
 
@@ -111,7 +118,7 @@
         <label>Profesie: </label>
       </div>
       <div class="test2">
-        <input type="text">
+        <input type="text" formControlName="profesie">
       </div>    
     </div>
 
@@ -120,7 +127,7 @@
         <label>Loc de munca: </label>
       </div>
       <div class="test2">
-        <input type="text">
+        <input type="text" formControlName="loc de munca">
       </div>    
     </div>
 
@@ -129,20 +136,13 @@
         <label>Numar de telefon: </label>
       </div>
       <div class="test2">
-        <input type="text">
+        <input type="text" formControlName="numarde telefon">
       </div>   
     </div>
 
-    <div class="test">
-      <div>
-        <label>Codul patului: </label>
-      </div>
-      <div class="test2">
-        <input type="text">
-      </div>     
-    </div>
 
-    <button type="submit" class="butt">Submit</button>
+    <button type="reset" [disabled]="contactFormPacienti.invalid" class="button" (click)="submitAddPacient(contactFormPacienti.value)">Submit</button>
+    <p *ngIf="isSubmit" class="submitPacient" >{{ submitMessage }}</p>
   </form>
 
   <form class="FormAddTratment" *ngIf="showForm3">
@@ -150,23 +150,27 @@
       Va rugam completati datele urmatoare:
     </div>
     <div class="test">
-    <div>
-      <label>Pacient: </label>
+      <div>
+        <label>Nume pacient: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="nume">
+      </div>  
+      </div>
+      <div class="test">
+        <div>
+          <label>Prenume pacient: </label>
+        </div>
+        <div class="test2">
+          <input type="text" formControlName="prenume">
+        </div>  
     </div>
-    <div>
-      <select>
-        <option value="optiunea1">Optiunea 1</option>
-        <option value="optiunea1">Optiunea 2</option>
-        <option value="optiunea1">Optiunea 3</option>
-      </select>
-    </div>
-  </div>
     <div class="test">
       <div>
         <label>Nume medicament: </label>
       </div>
       <div class="test2">
-        <input type="text">
+        <input type="text" formControlName="nume medicament">
       </div>   
     </div>
 
@@ -175,7 +179,7 @@
         <label>Administrare: </label>
       </div>
       <div class="test2">
-        <input type="text"> 
+        <input type="text" formControlName="administrare"> 
       </div>
     </div>
 
@@ -184,8 +188,16 @@
         <label for="durata">Durata tratamentului: </label>
       </div>
       <div class="test2">
-        <input type="text">
+        <input type="text" formControlName="durata">
       </div>
+    </div>
+    <div class="test">
+      <div>
+        <label>Codul patului: </label>
+      </div>
+      <div class="test2">
+        <input type="text">
+      </div>     
     </div>
     <div class="test">
       <label for="com">Comanda directa: </label>
