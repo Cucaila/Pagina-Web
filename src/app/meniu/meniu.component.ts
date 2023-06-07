@@ -31,6 +31,11 @@ export class MeniuComponent implements OnInit {
   usrData!: Observable<any[]>
   contactformPacienti!: FormGroup;
 
+  private myformTratament!: CollectionReference<any>;
+  tratamente!: Observable<any[]>;
+  usData!: Observable<any[]>
+  contactformTratament!: FormGroup;
+
   constructor(private formBuilder: FormBuilder, private firestore: Firestore){
     this.getDocument();
   }
@@ -70,6 +75,18 @@ export class MeniuComponent implements OnInit {
       profesie : [null, Validators.required],
       locDeMunca : [null, Validators.required],
       numarDeTelefon : [null, Validators.required]
+    });
+
+    this.myformTratament = collection(this.firestore, 'tratamente');
+
+    this.contactformTratament = this.formBuilder.group({
+      nume: [null, Validators.required],
+      prenume : [null, Validators.required],
+      numeMedicament : [null, Validators.required],
+      administrare : [null, Validators.required],
+      durataTratament : [null, Validators.required],
+      codPat : [null, Validators.required],
+      comanda : [null, Validators.required],
     });
    
 
@@ -134,6 +151,30 @@ getPacientDocument(): void {
 
   this.userData = collectionData(CollectionInstance);
 }
+
+submitAddTratament(value: any) {
+  addDoc(this.myformTratament, value)
+    .then(() => {
+      this.submitMessage = 'Submitted Successfully!';
+      this.isSubmit = true;
+      setTimeout(() => {
+        this.isSubmit = false;
+      }, 8000);
+    })
+    .catch((err: any) => {
+      console.log(err);
+    });
+}
+
+getTratmentDocument(): void {
+  const CollectionInstance = collection(this.firestore, 'tratamente');
+  collectionData(CollectionInstance)
+  .subscribe(value => {
+    console.log(value)
+  });
+
+  this.userData = collectionData(CollectionInstance);
+}
   
 
   // getMedici(): Observable<any[]> {
@@ -148,6 +189,5 @@ getPacientDocument(): void {
   //   );
   // }
 
-  
 }
 

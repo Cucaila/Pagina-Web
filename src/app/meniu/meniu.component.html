@@ -143,7 +143,7 @@
     <p *ngIf="isSubmit" class="submitPacient" >{{ submitMessage }}</p>
   </form>
 
-  <form class="FormAddTratment" *ngIf="showForm3">
+  <form  [formGroup]="contactformTratament" class="FormAddTratment" *ngIf="showForm3">
     <div class="titlu">
       Va rugam completati datele urmatoare:
     </div>
@@ -168,7 +168,7 @@
         <label>Nume medicament: </label>
       </div>
       <div class="test2">
-        <input type="text" formControlName="nume medicament">
+        <input type="text" formControlName="numeMedicament">
       </div>   
     </div>
 
@@ -186,7 +186,7 @@
         <label for="durata">Durata tratamentului: </label>
       </div>
       <div class="test2">
-        <input type="text" formControlName="durata">
+        <input type="text" formControlName="durataTratament">
       </div>
     </div>
     <div class="test">
@@ -194,15 +194,15 @@
         <label>Codul patului: </label>
       </div>
       <div class="test2">
-        <input type="text">
+        <input type="text" formControlName="codPat">
       </div>     
     </div>
     <div class="test">
       <label for="com">Comanda directa: </label>
-      <input type="checkbox">
+      <input type="checkbox" formControlName="comanda">
     </div>
-
-    <button type="submit" class="but">Submit</button>
+    <button type="reset" [disabled]="contactformTratament.invalid" class="button" (click)="submitAddTratament(contactformTratament.value)">Submit</button>
+    <p *ngIf="isSubmit" class="submitTratament" >{{ submitMessage }}</p>
   </form>
 
   <form *ngIf="showForm4">
