@@ -1,0 +1,62 @@
+form{
+    width: 60%;
+    height: 400px;
+    /* border: 1px solid rgb(145, 138, 138); */
+    /* padding: 0px 20px 20px 20px; */
+    margin-left: 300px;
+    margin-top: 50px;
+    border: 1px solid;
+    
+    }
+    .username{
+        width: 20px;
+        margin-left: 60%;
+        margin-top: -300px;
+    }
+    .label1{
+        width: 20px;
+        margin-left: 60%;
+        margin-top: 10px;
+    }
+    .pass{
+        width: 20px;
+        margin-left: 60%;
+        margin-top: 20px;
+    }
+    .rol{
+        width: 20px;
+        margin-left: 60%;
+        margin-top: 20px;
+    }
+    .label2{
+        width: 20px;
+        margin-left: 60%;
+        margin-top: 10px;
+    }
+    .login{
+        width: 20px;
+        margin-left: 60%;
+        margin-top: 10px;
+    }
+    .button{
+        background-color: rgb(178, 231, 242);
+    }
+    .remember{
+        margin-top: 10px;
+        margin-left: 600px;
+    }
+    .forgot-password{
+        margin-top: 10px;
+        margin-left: 607px;
+    }
+    .background-IMG {
+        background-image: url('src/assets/img/photo.jpg');
+        width: 450px;
+        height: 400px;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    .but{
+        margin-left: 120px;
+        margin-top: -150px;
+    }

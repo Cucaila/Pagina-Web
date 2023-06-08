@@ -21,14 +21,14 @@ export class AuthService {
   }
 
   //register method
-  register(username: string, password: string){
-    this.fireauth.createUserWithEmailAndPassword(username, password).then(()=>{
-        this.router.navigate(['/login/meniu']);
-    }, err=>{
-        alert('Esti prost');
-        this.router.navigate(['/login']);
-    })
-  }
+  // register(username: string, password: string){
+  //   this.fireauth.createUserWithEmailAndPassword(username, password).then(()=>{
+  //       this.router.navigate(['/login/meniu']);
+  //   }, err=>{
+  //       alert('Esti prost');
+  //       this.router.navigate(['/login']);
+  //   })
+  // }
 
   //sign out
   logout(){

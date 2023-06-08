@@ -38,6 +38,8 @@ export class MeniuComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private firestore: Firestore){
     this.getDocument();
+    this.getPacientDocument();
+    this.getTratmentDocument();
   }
   
 
@@ -86,7 +88,7 @@ export class MeniuComponent implements OnInit {
       administrare : [null, Validators.required],
       durataTratament : [null, Validators.required],
       codPat : [null, Validators.required],
-      comanda : [null, Validators.required],
+      // comanda : [null, Validators.required],
     });
    
 
@@ -153,6 +155,7 @@ getPacientDocument(): void {
 }
 
 submitAddTratament(value: any) {
+  console.log(value);
   addDoc(this.myformTratament, value)
     .then(() => {
       this.submitMessage = 'Submitted Successfully!';
