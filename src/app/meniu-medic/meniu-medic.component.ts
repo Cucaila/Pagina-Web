@@ -38,7 +38,7 @@ export class MeniuMedicComponent implements OnInit{
     this.showForm3 = formName === 'form3';
     this.showForm4 = formName === 'form4';
   }
-
+  
   ngOnInit(): void {
     
     this.myformPacienti = collection(this.firestore, 'pacienti');

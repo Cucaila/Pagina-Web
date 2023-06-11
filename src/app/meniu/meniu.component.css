@@ -48,8 +48,8 @@
   }
 
   .showMeds{
-    width: 30%;
-    height: 400px;
+    width: 40%;
+    height: 5%;
     margin-left: 600px;
   }
 
@@ -105,3 +105,51 @@
     margin-left: 200px;
     margin-top: 30px;
   }
+
+  .stergere{
+    margin-left: 200px;
+    background-color: rgb(178, 231, 242);
+  }
+  .username{
+    width: 20px;
+    margin-left: 20%;
+    margin-top: 50px;
+}
+.label1{
+    width: 20px;
+    margin-left: 20%;
+    margin-top: 10px;
+} 
+.pass{
+    width: 20px;
+    margin-left: 20%;
+    margin-top: 20px;
+}
+.label2{
+    width: 20px;
+    margin-left: 20%;
+    margin-top: 10px;
+}
+.login{
+    width: 20px;
+    margin-left: 20%;
+    margin-top: 10px;
+}
+.button{
+    background-color: rgb(178, 231, 242);
+}
+.meds{
+    margin-top: 20px;
+    margin-left: 15px;
+}
+.showMed{
+  border: 1px solid;
+  width: 40%;
+  height: 400px;
+  margin-left: 400px;
+}
+.pacienti{
+  margin-left: 100px;
+  margin-top: 40px;
+  font-weight: 500;
+}
