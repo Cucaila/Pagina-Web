@@ -1,0 +1,98 @@
+<div class="tab">
+    <button class="tablinks" (click)="showForm('form2')">Adaugare pacient</button>
+    <button class="tablinks" (click)="showForm('form3')">Adaugare tratament</button>
+    <button class="tablinks" (click)="showForm('form4')">Lista de pacienti</button>
+    <button class="tablinks" >Comenzi</button>
+    
+  </div>
+
+<form [formGroup]="contactformPacienti" class="formAddPacient">
+    <div class="titlu">
+      Va rugam completati datele urmatoare:
+    </div>
+    <div class="test">
+      <div>
+        <label>Nume: </label>
+      </div>
+     <div class="test2">
+      <input type="text" formControlName="nume">
+     </div>
+    </div>
+
+    <div class="test">
+      <div>
+        <label>Prenume: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="prenume">
+      </div>
+    </div>
+
+    <div class="test">
+      <div>
+        <label>Varsta: </label>
+      </div>
+      <div class="test2">
+        <input type="number" formControlName="varsta">
+      </div>
+    </div>
+
+    <div class="test">
+      <div>
+        <label>CNP: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="cnp">
+      </div>
+    </div>
+
+    <div class="test">
+      <div>
+        <label>Adresa: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="adresa">
+      </div>  
+    </div>
+
+    <div class="test">
+        <div>
+          <label>Adresa de email: </label>
+        </div>
+        <div class="test2">
+          <input type="email" formControlName="email">
+        </div>   
+      </div>
+
+      <div class="test">
+        <div>
+          <label>Numar de telefon: </label>
+        </div>
+        <div class="test2">
+          <input type="text" formControlName="numarDeTelefon">
+        </div>   
+      </div>
+
+    <div class="test">
+      <div>
+        <label>Profesie: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="profesie">
+      </div>    
+    </div>
+
+    <div class="test">
+      <div>
+        <label>Loc de munca: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="locDeMunca">
+      </div>    
+    </div>
+
+
+    <button type="reset" [disabled]="contactformPacienti.invalid" class="button" (click)="submitAddPacient(contactformPacienti.value)">Submit</button>
+    <p *ngIf="isSubmit" class="submitPacient" >{{ submitMessage }}</p>
+  </form>
+

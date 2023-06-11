@@ -26,24 +26,9 @@ export class MeniuPacientComponent implements OnInit{
   prenume:string='';
 
   constructor(private db: Firestore, private route: ActivatedRoute){
-    // this.getPacientD();
   }
 
   ngOnInit(): void {
-    // this.myFormP = collection(this.fs, 'pacienti');
-
-    // this.contactPacienti = this.fBuilderPatient.group({
-    //   nume: [null, Validators.required],
-    //   prenume : [null, Validators.required],
-    //   medic : [null, Validators.required],
-    //   varsta : [null, Validators.required],
-    //   cnp : [null, Validators.required],
-    //   adresa : [null, Validators.required],
-    //   profesie : [null, Validators.required],
-    //   locDeMunca : [null, Validators.required],
-    //   numarDeTelefon : [null, Validators.required]
-    // });
-
     this.route.queryParams.subscribe(params => {
       this.username = params['myString'];
       console.log(this.username); // afișează valoarea myString din URL
@@ -57,17 +42,6 @@ export class MeniuPacientComponent implements OnInit{
 
       this.getPacientD();
   }
-
-  // getPacientD(): void {
-  //   const CollectionInstance = collection(this.db, 'pacienti');
-  //   collectionData(CollectionInstance)
-  //   .subscribe(value => {
-  //     const FilteredValue = value.filter(item => (item['nume']  == this.nume) && (item['prenume'] == this.prenume));
-  //     console.log(FilteredValue);
-  //   });
-  
-  //   this.pacientData = collectionData(CollectionInstance);
-  // }
 
   getPacientD(): void {
     const CollectionInstance = collection(this.db, 'pacienti');

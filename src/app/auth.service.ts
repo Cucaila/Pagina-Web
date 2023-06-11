@@ -15,9 +15,12 @@ export class AuthService {
         if(this.checkIfPacientUsername(username)){
           localStorage.setItem('token', 'true');
           this.router.navigate(['/login/meniu-pacient'], { queryParams: { myString: username } });
+        }else if(this.checkIfMedicUsername(username)){
+          localStorage.setItem('token', 'true');
+          this.router.navigate(['/login/meniu-medic'], { queryParams: { myString: username } });
         }else{
           localStorage.setItem('token', 'true');
-        this.router.navigate(['/login/meniu']);
+          this.router.navigate(['/login/meniu']);
         }
     }, err=>{
         alert('Esti prost');
@@ -46,6 +49,10 @@ export class AuthService {
   }
   checkIfPacientUsername(username: string): boolean {
     const regex = /@pacient\./i; // Expresie regulată pentru verificarea cuvântului "pacient"
+    return regex.test(username);
+  }
+  checkIfMedicUsername(username: string): boolean {
+    const regex = /@medic\./i; // Expresie regulată pentru verificarea cuvântului "pacient"
     return regex.test(username);
   }
 }

@@ -15,13 +15,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { AuthService } from './auth.service';
 import { MeniuPacientComponent } from './meniu-pacient/meniu-pacient.component';
+import { MeniuMedicComponent } from './meniu-medic/meniu-medic.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MeniuComponent,
     LoginComponent,
-    MeniuPacientComponent
+    MeniuPacientComponent,
+    MeniuMedicComponent
   ],
   imports: [
     BrowserModule,
