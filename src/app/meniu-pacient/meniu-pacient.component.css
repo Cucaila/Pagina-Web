@@ -1,11 +1,22 @@
 .showMeds{
     width: 30%;
     height: 400px;
-    margin-left: 600px;
+    margin-left: 500px;
+    margin-top: 70px;
   }
 
   .showMed{
     border: 1px solid;
-    width: 50%;
-    height: 200px;
+    width: 100%;
+    height: 400px;
+  }
+  .pacienti{
+    margin-left: 100px;
+    margin-top: 40px;
+    font-weight: 500;
+  }
+  .fisaMed{
+    margin-top: 40px;
+    margin-left: 130px;
+    font-weight: bold;
   }

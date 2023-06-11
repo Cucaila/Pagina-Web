@@ -1,10 +1,20 @@
 <form class="showMeds">
     <ul *ngFor="let data of pacientData |async">
         <form class="showMed">
-        <p>Nume: {{ data.nume }}  {{ data.prenume }} </p>
-        <p>Medic: {{ data.medic }} </p>
+            <div class="fisaMed">
+        <p>FISA MEDICALA</p>
+        </div>
+        <div class="pacienti">
+        <p>Nume si prenume: {{ data.nume }}  {{ data.prenume }} </p>
         <p>Varsta: {{ data.varsta }} </p>
+        <p>CNP: {{ data.cnp }}</p>
+        <p>Adresa: {{ data.adresa }}</p>
+        <p>Numar de contact: {{ data.numarDeTelefon }}</p>
+        <p>Adresa de email: {{ data.adresaEmail }}</p>
+        <p>Profesie: {{data.profesie }}</p>
+        <p>Loc de munca: {{data.lodDeMunca }}</p>
+         </div>
+        
         </form>
     </ul>
-    work
 </form>
