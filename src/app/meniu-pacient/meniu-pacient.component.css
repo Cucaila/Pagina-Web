@@ -1,0 +1,11 @@
+.showMeds{
+    width: 30%;
+    height: 400px;
+    margin-left: 600px;
+  }
+
+  .showMed{
+    border: 1px solid;
+    width: 50%;
+    height: 200px;
+  }

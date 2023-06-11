@@ -12,8 +12,13 @@ export class AuthService {
   //login method
   login(username: string, password: string){
     this.fireauth.signInWithEmailAndPassword(username, password).then(()=>{
-        localStorage.setItem('token', 'true');
+        if(this.checkIfPacientUsername(username)){
+          localStorage.setItem('token', 'true');
+          this.router.navigate(['/login/meniu-pacient'], { queryParams: { myString: username } });
+        }else{
+          localStorage.setItem('token', 'true');
         this.router.navigate(['/login/meniu']);
+        }
     }, err=>{
         alert('Esti prost');
         this.router.navigate(['/login']);
@@ -38,5 +43,9 @@ export class AuthService {
     }, err=>{
       alert('Esti prost');
     })
+  }
+  checkIfPacientUsername(username: string): boolean {
+    const regex = /@pacient\./i; // Expresie regulată pentru verificarea cuvântului "pacient"
+    return regex.test(username);
   }
 }

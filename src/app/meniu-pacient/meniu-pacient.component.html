@@ -1,0 +1,10 @@
+<form class="showMeds">
+    <ul *ngFor="let data of pacientData |async">
+        <form class="showMed">
+        <p>Nume: {{ data.nume }}  {{ data.prenume }} </p>
+        <p>Medic: {{ data.medic }} </p>
+        <p>Varsta: {{ data.varsta }} </p>
+        </form>
+    </ul>
+    work
+</form>
