@@ -2,11 +2,10 @@
     <button class="tablinks" (click)="showForm('form2')">Adaugare pacient</button>
     <button class="tablinks" (click)="showForm('form3')">Adaugare tratament</button>
     <button class="tablinks" (click)="showForm('form4')">Lista de pacienti</button>
-    <button class="tablinks" >Comenzi</button>
-    
+    <button class="tablinks" >Comenzi</button>  
   </div>
 
-<form [formGroup]="contactformPacienti" class="formAddPacient">
+<form [formGroup]="contactformPacienti" class="formAddPacient" *ngIf="showForm2">
     <div class="titlu">
       Va rugam completati datele urmatoare:
     </div>
@@ -94,5 +93,67 @@
 
     <button type="reset" [disabled]="contactformPacienti.invalid" class="button" (click)="submitAddPacient(contactformPacienti.value)">Submit</button>
     <p *ngIf="isSubmit" class="submitPacient" >{{ submitMessage }}</p>
+  </form>
+
+  <form  [formGroup]="contactformTratamente" class="FormAddTratment" *ngIf="showForm3">
+    <div class="titlu">
+      Va rugam completati datele urmatoare:
+    </div>
+    <div class="test">
+      <div>
+        <label>Nume pacient: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="nume">
+      </div>  
+      </div>
+      <div class="test">
+        <div>
+          <label>Prenume pacient: </label>
+        </div>
+        <div class="test2">
+          <input type="text" formControlName="prenume">
+        </div>  
+    </div>
+    <div class="test">
+      <div>
+        <label>Nume medicament: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="numeMedicament">
+      </div>   
+    </div>
+
+    <div class="test">
+      <div>
+        <label>Administrare: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="administrare"> 
+      </div>
+    </div>
+
+    <div class="test">
+      <div>
+        <label for="durata">Durata tratamentului: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="durataTratament">
+      </div>
+    </div>
+    <div class="test">
+      <div>
+        <label>Codul patului: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="codPat">
+      </div>     
+    </div>
+    <div class="test">
+      <label for="com">Comanda directa: </label>
+      <input type="checkbox" formControlName="comanda">
+    </div>
+    <button type="reset" [disabled]="contactformTratamente.invalid" class="button" (click)="submitAddTratament(contactformTratamente.value)">Submit</button>
+    <p *ngIf="isSubmit" class="submitTratament" >{{ submitMessage }}</p>
   </form>
 
