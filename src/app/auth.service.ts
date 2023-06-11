@@ -23,7 +23,7 @@ export class AuthService {
           this.router.navigate(['/login/meniu']);
         }
     }, err=>{
-        alert('Esti prost');
+        alert('Datele exista deja!');
         this.router.navigate(['/login']);
     })
   }
@@ -31,9 +31,15 @@ export class AuthService {
   //register method
   register(username: string, password: string){
     this.fireauth.createUserWithEmailAndPassword(username, password).then(()=>{
-        this.router.navigate(['/login/meniu']);
+      // if(this.checkIfPacientUsername(username)){
+      //   this.router.navigate(['/login/meniu-pacient'], { queryParams: { myString: username } });
+      // }else if(this.checkIfMedicUsername(username)){
+      //   this.router.navigate(['/login/meniu-medic'], { queryParams: { myString: username } });
+      // }else{
+      //   this.router.navigate(['/login/meniu']);
+      // }
     }, err=>{
-        alert('Esti prost');
+        alert('Date existente sau introduse gresit!!');
         this.router.navigate(['/login']);
     })
   }

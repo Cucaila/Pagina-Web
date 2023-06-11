@@ -14,7 +14,7 @@ password: string='';
 
 ngOnInit(): void{}
 
-constructor(private auth: AuthService, private router: Router){}
+constructor(private auth: AuthService){}
 
 login(){
   if(this.username=='' && this.password==''){

@@ -1,222 +1,57 @@
+<router-outlet></router-outlet>
 <div class="tab">
-    <!-- <button class="tablinks" onmouseover="openCity(event, 'Medic')">Add medic</button> -->
-    <!-- <button class="tablinks" onmouseover="openCity(event, 'Add')">Add pacient</button>
-    <button class="tablinks" onmouseover="openCity(event, 'Tratment')">Add tratment</button>
-    <button class="tablinks" onmouseover="openCity(event, 'Pacients')">Pacients list</button>
-    <button class="tablinks" onmouseover="openCity(event, 'Medics')">Medics list</button> -->
-    <button class="tablinks" (click)="showForm('form1')">Adaugare medic</button>
-    <button class="tablinks" (click)="showForm('form2')">Adaugare pacient</button>
-    <button class="tablinks" (click)="showForm('form3')">Adaugare tratament</button>
-    <button class="tablinks" (click)="showForm('form4')">Lista de pacienti</button>
-    <button class="tablinks" (click)="showForm('form5')">Lista de medici</button>
-    <button class="tablinks" (click)="showTratament">Comenzi</button>
-    
+    <button class="tablinks" (click)="showForm('form1')">Adaugare cont</button>
+    <button class="tablinks" (click)="showForm('form2')">Vizualizare medici</button>
+    <button class="tablinks" (click)="showForm('form3')">Vizualizare Pacienti</button>
   </div>
 
-  <form [formGroup]="contactForm" class="formAddMedic" *ngIf="showForm1">
-    <div class="titlu">
-      Va rugam completati datele urmatoare:
+  <form class="formAddMedic" *ngIf="showForm1">
+    <div class="username">
+      <label>Username:</label>
     </div>
-    <div class="test">
-      <div>
-        <label>Nume: </label>
+      <div class="label1">
+        <input type="email" name="username" [(ngModel)]="username">
       </div>
-      <div class="test2">
-        <input type="text" formControlName="nume">
+    <div class="pass">
+      <label>Password:</label>
       </div>
-    </div>
-
-   <div class="test">
-    <div>
-      <label>Prenume: </label>
-    </div>
-    <div class="test2">
-      <input type="text" formControlName="prenume">
-    </div>
-   </div>
-
-   <div class="test">
-    <div>
-      <label>Departament: </label>
-    </div>
-    <div class="test2">
-      <input type="text" formControlName="departament">
-    </div>
-   </div>
-<div class="test">
-  <div>
-    <label>Varsta: </label>
- </div>
- <div class="test2">
-    <input type="number" formControlName="varsta">
- </div>
-</div>
-<button type="reset" [disabled]="contactForm.invalid" class="button" (click)="submitAddMedic(contactForm .value)">Submit</button>
+      <div class="label2">
+        <input type="password" name="password" [(ngModel)]="password">
+      </div>
+<button type="reset" class="button" (click)="register()">Adaugare</button>
 <p *ngIf="isSubmit" class="submitMedic" >{{ submitMessage }}</p>
 </form>
 
-  <form [formGroup]="contactformPacienti" class="formAddPacient"  *ngIf="showForm2">
-    <div class="titlu">
-      Va rugam completati datele urmatoare:
-    </div>
-    <div class="test">
-      <div>
-        <label>Nume: </label>
-      </div>
-     <div class="test2">
-      <input type="text" formControlName="nume">
-     </div>
-    </div>
-
-    <div class="test">
-      <div>
-        <label>Prenume: </label>
-      </div>
-      <div class="test2">
-        <input type="text" formControlName="prenume">
-      </div>
-    </div>
-    <div class="test">
-      <div>
-        <label>Medic: </label>
-      </div>
-      <div class="test2">
-        <input type="text" formControlName="medic">
-      </div>
-    </div>
-    <div class="test">
-      <div>
-        <label>Varsta: </label>
-      </div>
-      <div class="test2">
-        <input type="number" formControlName="varsta">
-      </div>
-    </div>
-
-    <div class="test">
-      <div>
-        <label>CNP: </label>
-      </div>
-      <div class="test2">
-        <input type="text" formControlName="cnp">
-      </div>
-    </div>
-
-    <div class="test">
-      <div>
-        <label>Adresa: </label>
-      </div>
-      <div class="test2">
-        <input type="text" formControlName="adresa">
-      </div>  
-    </div>
-
-    <div class="test">
-      <div>
-        <label>Profesie: </label>
-      </div>
-      <div class="test2">
-        <input type="text" formControlName="profesie">
-      </div>    
-    </div>
-
-    <div class="test">
-      <div>
-        <label>Loc de munca: </label>
-      </div>
-      <div class="test2">
-        <input type="text" formControlName="locDeMunca">
-      </div>    
-    </div>
-
-    <div class="test">
-      <div>
-        <label>Numar de telefon: </label>
-      </div>
-      <div class="test2">
-        <input type="text" formControlName="numarDeTelefon">
-      </div>   
-    </div>
-
-
-    <button type="reset" [disabled]="contactformPacienti.invalid" class="button" (click)="submitAddPacient(contactformPacienti.value)">Submit</button>
-    <p *ngIf="isSubmit" class="submitPacient" >{{ submitMessage }}</p>
-  </form>
-
-  <form  [formGroup]="contactformTratament" class="FormAddTratment" *ngIf="showForm3">
-    <div class="titlu">
-      Va rugam completati datele urmatoare:
-    </div>
-    <div class="test">
-      <div>
-        <label>Nume pacient: </label>
-      </div>
-      <div class="test2">
-        <input type="text" formControlName="nume">
-      </div>  
-      </div>
-      <div class="test">
-        <div>
-          <label>Prenume pacient: </label>
-        </div>
-        <div class="test2">
-          <input type="text" formControlName="prenume">
-        </div>  
-    </div>
-    <div class="test">
-      <div>
-        <label>Nume medicament: </label>
-      </div>
-      <div class="test2">
-        <input type="text" formControlName="numeMedicament">
-      </div>   
-    </div>
-
-    <div class="test">
-      <div>
-        <label>Administrare: </label>
-      </div>
-      <div class="test2">
-        <input type="text" formControlName="administrare"> 
-      </div>
-    </div>
-
-    <div class="test">
-      <div>
-        <label for="durata">Durata tratamentului: </label>
-      </div>
-      <div class="test2">
-        <input type="text" formControlName="durataTratament">
-      </div>
-    </div>
-    <div class="test">
-      <div>
-        <label>Codul patului: </label>
-      </div>
-      <div class="test2">
-        <input type="text" formControlName="codPat">
-      </div>     
-    </div>
-    <div class="test">
-      <label for="com">Comanda directa: </label>
-      <input type="checkbox" formControlName="comanda">
-    </div>
-    <button type="reset" [disabled]="contactformTratament.invalid" class="button" (click)="submitAddTratament(contactformTratament.value)">Submit</button>
-    <p *ngIf="isSubmit" class="submitTratament" >{{ submitMessage }}</p>
-  </form>
-
-  <form *ngIf="showForm4">
-    <label for="name">Name: </label>
-    <input id="name" type="text">
-  </form>
-
-  <form *ngIf="showForm5" class="showMeds">
+  <form *ngIf="showForm2" class="showMeds">
     <ul *ngFor="let data of userData |async">
         <form class="showMed">
+          <div class="meds">
         <p>Nume: {{ data.nume }}  {{ data.prenume }} </p>
         <p>Departament: {{ data.departament }} </p>
         <p>Varsta: {{ data.varsta }} </p>
+        </div>
+        <button type="button" class="button">Editare</button>
+        <button type="button" class="stergere">Stergere</button>
         </form>
     </ul>
+  </form> 
+
+  <form *ngIf="showForm3" class="showPatients">
+    <ul *ngFor="let data of userData |async">
+      <form class="showMed">
+          <div class="pacienti">
+          <p>Nume si prenume: {{ data.nume }}  {{ data.prenume }} </p>
+          <p>Varsta: {{ data.varsta }} </p>
+          <p>CNP: {{ data.cnp }}</p>
+          <p>Adresa: {{ data.adresa }}</p>
+          <p>Numar de contact: {{ data.numarDeTelefon }}</p>
+          <p>Adresa de email: {{ data.email }}</p>
+          <p>Profesie: {{data.profesie }}</p>
+          <p>Loc de munca: {{data.locDeMunca }}</p>
+           </div>
+      <button type="button" class="button">Editare</button>
+      <button type="button" class="stergere" (click)="deleteData(data.id)">Stergere</button>
+      </form>
+  </ul>
   </form>
   

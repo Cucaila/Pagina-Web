@@ -1,7 +1,10 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Firestore, collectionData, collection, CollectionReference, addDoc } from '@angular/fire/firestore';
+import { AuthService } from '../auth.service';
+import { Firestore, collection, collectionData, doc } from '@angular/fire/firestore';
+
 import { Observable } from 'rxjs/internal/Observable';
+import { deleteDoc } from 'firebase/firestore';
 
 @Component({
   selector: 'app',
@@ -16,30 +19,31 @@ export class MeniuComponent implements OnInit {
   showForm1 = false;
   showForm2 = false;
   showForm3 = false;
-  showForm4 = false;
-  showForm5 = false;
 
-  contactForm!: FormGroup;
+  username: string='';
+  password: string='';
+
+  // contactForm!: FormGroup;
   isSubmit = true;
   submitMessage='';
 
-  private myform!: CollectionReference<any>;
+  // private myform!: CollectionReference<any>;
   userData!: Observable<any[]>;
 
-  private myformPacienti!: CollectionReference<any>;
-  pacienti!: Observable<any[]>;
-  usrData!: Observable<any[]>
-  contactformPacienti!: FormGroup;
+  // private myformPacienti!: CollectionReference<any>;
+  // pacienti!: Observable<any[]>;
+  // usrData!: Observable<any[]>
+  // contactformPacienti!: FormGroup;
 
-  private myformTratament!: CollectionReference<any>;
-  tratamente!: Observable<any[]>;
-  usData!: Observable<any[]>
-  contactformTratament!: FormGroup;
+  // private myformTratament!: CollectionReference<any>;
+  // tratamente!: Observable<any[]>;
+  // usData!: Observable<any[]>
+  // contactformTratament!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private firestore: Firestore){
+  constructor(private auth: AuthService, private firestore: Firestore){
     this.getDocument();
     this.getPacientDocument();
-    this.getTratmentDocument();
+    // this.getTratmentDocument();
   }
   
 
@@ -47,49 +51,44 @@ export class MeniuComponent implements OnInit {
     this.showForm1 = formName === 'form1';
     this.showForm2 = formName === 'form2';
     this.showForm3 = formName === 'form3';
-    this.showForm4 = formName === 'form4';
-    this.showForm5 = formName === 'form5';
-  }
-
-  showTratament(){
   }
 
   ngOnInit(): void {
 
-    this.myform = collection(this.firestore, 'medici');
+    // this.myform = collection(this.firestore, 'medici');
 
-    this.contactForm = this.formBuilder.group({
-      nume:[null,Validators.required],
-      prenume:[null,Validators.required],
-      departament:[null,Validators.required],
-      varsta:[null,[Validators.required]]
-    });
+    // this.contactForm = this.formBuilder.group({
+    //   nume:[null,Validators.required],
+    //   prenume:[null,Validators.required],
+    //   departament:[null,Validators.required],
+    //   varsta:[null,[Validators.required]]
+    // });
 
-    this.myformPacienti = collection(this.firestore, 'pacienti');
+    // this.myformPacienti = collection(this.firestore, 'pacienti');
 
-    this.contactformPacienti = this.formBuilder.group({
-      nume: [null, Validators.required],
-      prenume : [null, Validators.required],
-      medic : [null, Validators.required],
-      varsta : [null, Validators.required],
-      cnp : [null, Validators.required],
-      adresa : [null, Validators.required],
-      profesie : [null, Validators.required],
-      locDeMunca : [null, Validators.required],
-      numarDeTelefon : [null, Validators.required]
-    });
+    // this.contactformPacienti = this.formBuilder.group({
+    //   nume: [null, Validators.required],
+    //   prenume : [null, Validators.required],
+    //   medic : [null, Validators.required],
+    //   varsta : [null, Validators.required],
+    //   cnp : [null, Validators.required],
+    //   adresa : [null, Validators.required],
+    //   profesie : [null, Validators.required],
+    //   locDeMunca : [null, Validators.required],
+    //   numarDeTelefon : [null, Validators.required]
+    // });
 
-    this.myformTratament = collection(this.firestore, 'tratamente');
+    // this.myformTratament = collection(this.firestore, 'tratamente');
 
-    this.contactformTratament = this.formBuilder.group({
-      nume: [null, Validators.required],
-      prenume : [null, Validators.required],
-      numeMedicament : [null, Validators.required],
-      administrare : [null, Validators.required],
-      durataTratament : [null, Validators.required],
-      codPat : [null, Validators.required],
-      // comanda : [null, Validators.required],
-    });
+    // this.contactformTratament = this.formBuilder.group({
+    //   nume: [null, Validators.required],
+    //   prenume : [null, Validators.required],
+    //   numeMedicament : [null, Validators.required],
+    //   administrare : [null, Validators.required],
+    //   durataTratament : [null, Validators.required],
+    //   codPat : [null, Validators.required],
+    //   // comanda : [null, Validators.required],
+    // });
    
 
   //   this.medici = this.myform.snapshotChanges().pipe(
@@ -104,19 +103,43 @@ export class MeniuComponent implements OnInit {
   // }
   }
 
-  submitAddMedic(value: any){
-  addDoc(this.myform, value)
-      .then(() => {
-        this.submitMessage = 'Submitted Successfully!';
-        this.isSubmit = true;
-        setTimeout(() => {
-          this.isSubmit = false;
-        }, 8000);
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
+  register(){
+    if(this.username=='' && this.password==''){
+      alert('Introduceti datele!');
+      return;
+    }
+    
+    if(this.username==''){
+      alert('Introduceti numele de utilizator!');
+      return;
+    }
+    if(this.password==''){
+      alert('Introduceti parola!');
+      return;
+    }
+    this.auth.register(this.username, this.password);
+    this.username='';
+    this.password='';
+    this.submitMessage = 'Submitted Successfully!';
+           this.isSubmit = true;
+           setTimeout(() => {
+             this.isSubmit = false;
+           }, 8000);
   }
+
+  // submitAddMedic(value: any){
+  // addDoc(this.myform, value)
+  //     .then(() => {
+  //       this.submitMessage = 'Submitted Successfully!';
+  //       this.isSubmit = true;
+  //       setTimeout(() => {
+  //         this.isSubmit = false;
+  //       }, 8000);
+  //     })
+  //     .catch((err: any) => {
+  //       console.log(err);
+  //     });
+  // }
 
   getDocument(): void {
     const CollectionInstance = collection(this.firestore, 'medici');
@@ -128,56 +151,56 @@ export class MeniuComponent implements OnInit {
     this.userData = collectionData(CollectionInstance);
   }
 
-  submitAddPacient(value: any){
-    console.log(value);
+//   submitAddPacient(value: any){
+//     console.log(value);
  
-    addDoc(this.myformPacienti, value)
-    .then(() => {
-      this.submitMessage = 'Submitted Successfully!';
-      this.isSubmit = true;
-      setTimeout(() => {
-        this.isSubmit = false;
-      }, 8000);
-    })
-    .catch((err: any) => {
-      console.log(err);
-    });
-}
+//     addDoc(this.myformPacienti, value)
+//     .then(() => {
+//       this.submitMessage = 'Submitted Successfully!';
+//       this.isSubmit = true;
+//       setTimeout(() => {
+//         this.isSubmit = false;
+//       }, 8000);
+//     })
+//     .catch((err: any) => {
+//       console.log(err);
+//     });
+// }
 
 getPacientDocument(): void {
   const CollectionInstance = collection(this.firestore, 'pacienti');
-  collectionData(CollectionInstance)
+  collectionData(CollectionInstance, {idField: 'id' })
   .subscribe(value => {
     console.log(value)
   });
 
-  this.userData = collectionData(CollectionInstance);
+  this.userData = collectionData(CollectionInstance, {idField: 'id' });
 }
 
-submitAddTratament(value: any) {
-  console.log(value);
-  addDoc(this.myformTratament, value)
-    .then(() => {
-      this.submitMessage = 'Submitted Successfully!';
-      this.isSubmit = true;
-      setTimeout(() => {
-        this.isSubmit = false;
-      }, 8000);
-    })
-    .catch((err: any) => {
-      console.log(err);
-    });
-}
+// submitAddTratament(value: any) {
+//   console.log(value);
+//   addDoc(this.myformTratament, value)
+//     .then(() => {
+//       this.submitMessage = 'Submitted Successfully!';
+//       this.isSubmit = true;
+//       setTimeout(() => {
+//         this.isSubmit = false;
+//       }, 8000);
+//     })
+//     .catch((err: any) => {
+//       console.log(err);
+//     });
+// }
 
-getTratmentDocument(): void {
-  const CollectionInstance = collection(this.firestore, 'tratamente');
-  collectionData(CollectionInstance)
-  .subscribe(value => {
-    console.log(value)
-  });
+// getTratmentDocument(): void {
+//   const CollectionInstance = collection(this.firestore, 'tratamente');
+//   collectionData(CollectionInstance)
+//   .subscribe(value => {
+//     console.log(value)
+//   });
 
-  this.userData = collectionData(CollectionInstance);
-}
+//   this.userData = collectionData(CollectionInstance);
+// }
   
 
   // getMedici(): Observable<any[]> {
@@ -191,6 +214,14 @@ getTratmentDocument(): void {
   //     })
   //   );
   // }
+
+  deleteData(id: string){
+    const docInstance = doc(this.firestore, 'pecienti', id);
+    deleteDoc(docInstance)
+    .then(()=> {
+      console.log('Data deleted');
+    })
+  }
 
 }
 
