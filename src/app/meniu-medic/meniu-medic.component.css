@@ -52,6 +52,12 @@
     border: 1px solid;
     margin-left: 600px;
   }
+  .showPatients{
+    border: 1px solid;
+    width: 30%;
+    height: 400px;
+    margin-left: 600px;
+  }
   .titlu{
     margin-left: 60px;
     font-size: 20px;

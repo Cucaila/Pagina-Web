@@ -157,3 +157,22 @@
     <p *ngIf="isSubmit" class="submitTratament" >{{ submitMessage }}</p>
   </form>
 
+  <form *ngIf="showForm4" class="showPatients">
+    <ul *ngFor="let data of userData |async">
+      <form class="showMed">
+          <div class="pacienti">
+          <p>Nume si prenume: {{ data.nume }}  {{ data.prenume }} </p>
+          <p>Varsta: {{ data.varsta }} </p>
+          <p>CNP: {{ data.cnp }}</p>
+          <p>Adresa: {{ data.adresa }}</p>
+          <p>Numar de contact: {{ data.numarDeTelefon }}</p>
+          <p>Adresa de email: {{ data.email }}</p>
+          <p>Profesie: {{data.profesie }}</p>
+          <p>Loc de munca: {{data.locDeMunca }}</p>
+           </div>
+      <button type="button" class="button">Editare</button>
+      <button type="button" class="stergere">Stergere</button>
+      </form>
+  </ul>
+  </form>
+

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CollectionReference, Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
+import { Pacient } from '../pacient.model';
 
 @Component({
   selector: 'app',
@@ -17,6 +18,7 @@ export class MeniuMedicComponent implements OnInit{
   contactformPacienti!: FormGroup;
   isSubmit = true;
   submitMessage='';
+  patients!: Observable<Pacient[]>;
 
   contactformTratamente!:FormGroup;
 
@@ -27,7 +29,9 @@ export class MeniuMedicComponent implements OnInit{
   private myformTratament!: CollectionReference<any>;
   tratamente!: Observable<any[]>;
   
-  constructor(private formBuilder: FormBuilder, private firestore: Firestore){}
+  constructor(private formBuilder: FormBuilder, private firestore: Firestore){
+    this.getPacientDocument();
+  }
 
   showForm(formName: string) {
     this.showForm2 = formName === 'form2';
@@ -114,4 +118,5 @@ getTratmentDocument(): void {
 
   this.userData = collectionData(CollectionInstance);
 }
+
 }

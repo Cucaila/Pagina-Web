@@ -205,18 +205,45 @@
     <p *ngIf="isSubmit" class="submitTratament" >{{ submitMessage }}</p>
   </form>
 
-  <form *ngIf="showForm4">
-    <label for="name">Name: </label>
-    <input id="name" type="text">
+  <form *ngIf="showForm4" class="showPacients">
+    <table>
+      <thead>
+        <tr>
+          <th>Nume si Prenume</th>
+          <th>Medic</th>
+          <th>Varsta</th>
+          <th>Adresa</th>
+          <th>Numar de Telefon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of usrData |async">
+          <td>{{ data.nume }}  {{ data.prenume }} </td>
+          <td>{{ data.medic }} </td>
+          <td>{{ data.varsta }}</td>
+          <td>{{ data.adresa }}</td>
+          <td>{{ data.nrDeTelefon }}</td>
+        </tr>
+      </tbody>
+    </table>
   </form>
 
   <form *ngIf="showForm5" class="showMeds">
-    <ul *ngFor="let data of userData |async">
-        <form class="showMed">
-        <p>Nume: {{ data.nume }}  {{ data.prenume }} </p>
-        <p>Departament: {{ data.departament }} </p>
-        <p>Varsta: {{ data.varsta }} </p>
-        </form>
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Nume si Prenume</th>
+          <th>Departament</th>
+          <th>Varsta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of userData |async">
+          <td>{{ data.nume }}  {{ data.prenume }} </td>
+          <td>{{ data.departament }} </td>
+          <td>{{ data.varsta }}</td>
+        </tr>
+      </tbody>
+    </table>
   </form>
   
