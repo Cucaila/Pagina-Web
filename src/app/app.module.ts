@@ -11,19 +11,15 @@ import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Firestore, getFirestore, provideFirestore } from '@angular/fire/firestore'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
-import { DialogOverviewComponent } from './dialog-overview/dialog-overview.component';
 import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     MeniuComponent,
-    LoginComponent,
-    RegisterComponent,
-    DialogOverviewComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
