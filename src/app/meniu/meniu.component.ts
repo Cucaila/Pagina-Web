@@ -32,7 +32,7 @@ export class MeniuComponent implements OnInit {
 
   // private myformPacienti!: CollectionReference<any>;
   // pacienti!: Observable<any[]>;
-  // usrData!: Observable<any[]>
+  usrData!: Observable<any[]>
   // contactformPacienti!: FormGroup;
 
   // private myformTratament!: CollectionReference<any>;
@@ -143,12 +143,12 @@ export class MeniuComponent implements OnInit {
 
   getDocument(): void {
     const CollectionInstance = collection(this.firestore, 'medici');
-    collectionData(CollectionInstance)
+    collectionData(CollectionInstance, {idField: 'id' })
     .subscribe(value => {
       console.log(value)
     });
 
-    this.userData = collectionData(CollectionInstance);
+    this.userData = collectionData(CollectionInstance, {idField: 'id' });
   }
 
 //   submitAddPacient(value: any){
@@ -174,7 +174,7 @@ getPacientDocument(): void {
     console.log(value)
   });
 
-  this.userData = collectionData(CollectionInstance, {idField: 'id' });
+  this.usrData = collectionData(CollectionInstance, {idField: 'id' });
 }
 
 // submitAddTratament(value: any) {
@@ -215,8 +215,16 @@ getPacientDocument(): void {
   //   );
   // }
 
-  deleteData(id: string){
-    const docInstance = doc(this.firestore, 'pecienti', id);
+  deletePacienti(id1: string){
+    const docInstance = doc(this.firestore, 'pacienti', id1);
+    deleteDoc(docInstance)
+    .then(()=> {
+      console.log('Data deleted');
+    })
+  }
+
+  deleteMedici(id2: string){
+    const docInstance = doc(this.firestore, 'medici', id2);
     deleteDoc(docInstance)
     .then(()=> {
       console.log('Data deleted');

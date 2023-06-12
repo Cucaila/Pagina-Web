@@ -23,22 +23,22 @@
 </form>
 
   <form *ngIf="showForm2" class="showMeds">
-    <ul *ngFor="let data of userData |async">
+    <ul *ngFor="let medici of userData |async">
         <form class="showMed">
           <div class="meds">
-        <p>Nume: {{ data.nume }}  {{ data.prenume }} </p>
-        <p>Departament: {{ data.departament }} </p>
-        <p>Varsta: {{ data.varsta }} </p>
+        <p>Nume: {{ medici.nume }}  {{ medici.prenume }} </p>
+        <p>Departament: {{ medici.departament }} </p>
+        <p>Varsta: {{ medici.varsta }} </p>
         </div>
         <button type="button" class="button">Editare</button>
-        <button type="button" class="stergere">Stergere</button>
+        <button type="button" class="stergere" (click)="deleteMedici(medici.id)">Stergere</button>
         </form>
     </ul>
   </form> 
 
   <form *ngIf="showForm3" class="showPatients">
-    <ul *ngFor="let data of userData |async">
-      <form class="showMed">
+    <ul *ngFor="let data of usrData |async">
+      <form class="showPat">
           <div class="pacienti">
           <p>Nume si prenume: {{ data.nume }}  {{ data.prenume }} </p>
           <p>Varsta: {{ data.varsta }} </p>
@@ -50,7 +50,7 @@
           <p>Loc de munca: {{data.locDeMunca }}</p>
            </div>
       <button type="button" class="button">Editare</button>
-      <button type="button" class="stergere" (click)="deleteData(data.id)">Stergere</button>
+      <button type="button" class="stergere" (click)="deletePacienti(data.id)">Stergere</button>
       </form>
   </ul>
   </form>

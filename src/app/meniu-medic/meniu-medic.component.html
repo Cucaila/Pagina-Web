@@ -2,7 +2,7 @@
     <button class="tablinks" (click)="showForm('form2')">Adaugare pacient</button>
     <button class="tablinks" (click)="showForm('form3')">Adaugare tratament</button>
     <button class="tablinks" (click)="showForm('form4')">Lista de pacienti</button>
-    <button class="tablinks" >Comenzi</button>  
+    <button class="tablinks" (click)="showForm('form5')">Comenzi</button> 
   </div>
 
 <form [formGroup]="contactformPacienti" class="formAddPacient" *ngIf="showForm2">
@@ -169,6 +169,22 @@
           <p>Adresa de email: {{ data.email }}</p>
           <p>Profesie: {{data.profesie }}</p>
           <p>Loc de munca: {{data.locDeMunca }}</p>
+           </div>
+      <button type="button" class="button">Editare</button>
+      <button type="button" class="stergere">Stergere</button>
+      </form>
+  </ul>
+  </form>
+
+<form *ngIf="showForm5" class="showOrders">
+    <ul *ngFor="let data of ordersData |async">
+      <form class="showord">
+          <div class="orders">
+          <p>Nume si prenume: {{ data.patientFirstName }}  {{ data.patientLastName }} </p>
+          <p>Medicament: {{ data.medicine }} </p>
+          <p>Comanda efectuata: {{ data.isOrderFinished }}</p>
+          <p>Numar pat: {{ data.bedNumber }}</p>
+          <p>id: {{ data.id }}</p>
            </div>
       <button type="button" class="button">Editare</button>
       <button type="button" class="stergere">Stergere</button>

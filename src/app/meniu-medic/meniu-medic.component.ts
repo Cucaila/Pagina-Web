@@ -14,6 +14,11 @@ export class MeniuMedicComponent implements OnInit{
   showForm2 = false;
   showForm3 = false;
   showForm4 = false;
+  showForm5 = false;
+
+  myFormOrders! : CollectionReference<any>;
+  contactFormOrders!: FormGroup;
+  ordersData!: Observable<any[]>;
 
   contactformPacienti!: FormGroup;
   isSubmit = true;
@@ -31,12 +36,14 @@ export class MeniuMedicComponent implements OnInit{
   
   constructor(private formBuilder: FormBuilder, private firestore: Firestore){
     this.getPacientDocument();
+    this.getOrders();
   }
 
   showForm(formName: string) {
     this.showForm2 = formName === 'form2';
     this.showForm3 = formName === 'form3';
     this.showForm4 = formName === 'form4';
+    this.showForm5 = formName === 'form5';
   }
   
   ngOnInit(): void {
@@ -67,6 +74,17 @@ export class MeniuMedicComponent implements OnInit{
       codPat : [null, Validators.required],
       // comanda : [null, Validators.required],
     });
+
+    this.myFormOrders = collection(this.firestore, 'orders');
+
+    this.contactFormOrders = this.formBuilder.group({
+      bedNumber: [null, Validators.required],
+      id: [ null, Validators.required],
+      isOrderFinished: [null, Validators.required],
+      medicine: [null, Validators.required],
+      patientFirstName: [null, Validators.required],
+      patientLastName:[null, Validators.required]
+    })
   }
   submitAddPacient(value: any){
     console.log(value);
@@ -117,6 +135,16 @@ getTratmentDocument(): void {
   });
 
   this.userData = collectionData(CollectionInstance);
+}
+
+getOrders():void{
+  const CollectionInstance = collection(this.firestore, 'orders');
+  collectionData(CollectionInstance, {idField: 'id'})
+  .subscribe(value => {
+    console.log(value);
+  });
+
+  this.ordersData = collectionData(CollectionInstance, {idField: 'id'});
 }
 
 }
