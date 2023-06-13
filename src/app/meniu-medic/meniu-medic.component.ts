@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CollectionReference, DocumentReference, Firestore, addDoc, collection, collectionData, doc, setDoc, updateDoc } from '@angular/fire/firestore';
+import { CollectionReference, DocumentReference, Firestore, addDoc, collection, collectionData, deleteDoc, doc, setDoc, updateDoc } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { Pacient } from '../pacient.model';
@@ -13,14 +13,13 @@ import { AuthService } from '../auth.service';
 })
 export class MeniuMedicComponent implements OnInit{
 
-  nume='';
-  prenume='';
   showForm2 = false;
   showForm3 = false;
   showForm4 = false;
   showForm5 = false;
   showButton = false;
   showButton2 = true;
+
 
   ordersId : number = 0;
   isReadOnly: boolean=true;
@@ -181,6 +180,49 @@ updatePacienti(id3: string, value: any){
   this.showButton = false;
   this.showButton2 = true;
 }
+
+updateOrders(id4: string, value: any){
+  console.log("aci");
+  const docInstance = doc(this.firestore, 'orders', id4);
+  console.log(value);
+  const updateDataPac=
+  {
+      bedNumber: value.bedNumber,
+      id: value.id,
+      isOrderFinished: false,
+      medicine: value.medicine,
+      patientFirstName: value.patientFirstName,
+      patientLastName: value.patientLastName
+  }
+
+  updateDoc(docInstance, updateDataPac)
+  .then(()=> {
+    console.log('data updated');
+  })
+  .catch((err)=>{
+    console.log(err);
+  });
+  this.isReadOnly = true;
+  this.showButton = false;
+  this.showButton2 = true;
+}
+
+deletePacienti(id1: string){
+  const docInstance = doc(this.firestore, 'pacienti', id1);
+  deleteDoc(docInstance)
+  .then(()=> {
+    console.log('Data deleted');
+  })
+}
+
+deleteComenzi(id2: string){
+  const docInstance = doc(this.firestore, 'orders', id2);
+  deleteDoc(docInstance)
+  .then(()=> {
+    console.log('Data deleted');
+  })
+}
+
 logout(){
   this.auth.logout();
 }
