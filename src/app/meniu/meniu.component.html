@@ -55,4 +55,46 @@
       </form>
   </ul>
   </form>
+
+  <form [formGroup]="contactForm" class="formAddMedic" *ngIf="showForm4">
+    <div class="titlu">
+      Va rugam completati datele urmatoare:
+    </div>
+    <div class="test">
+      <div>
+        <label>Nume: </label>
+      </div>
+      <div class="test2">
+        <input type="text" formControlName="nume">
+      </div>
+    </div>
+
+   <div class="test">
+    <div>
+      <label>Prenume: </label>
+    </div>
+    <div class="test2">
+      <input type="text" formControlName="prenume">
+    </div>
+   </div>
+
+   <div class="test">
+    <div>
+      <label>Departament: </label>
+    </div>
+    <div class="test2">
+      <input type="text" formControlName="departament">
+    </div>
+   </div>
+<div class="test">
+  <div>
+    <label>Varsta: </label>
+ </div>
+ <div class="test2">
+    <input type="number" formControlName="varsta">
+ </div>
+</div>
+<button type="reset" [disabled]="contactForm.invalid" class="button" (click)="submitAddMedic(contactForm .value)">Submit</button>
+<p *ngIf="isSubmit" class="submitMedic" >{{ submitMessage }}</p>
+</form>
   

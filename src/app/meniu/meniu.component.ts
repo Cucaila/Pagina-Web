@@ -19,6 +19,7 @@ export class MeniuComponent implements OnInit {
   showForm1 = false;
   showForm2 = false;
   showForm3 = false;
+  showForm4 = false;
 
   username: string='';
   password: string='';
@@ -51,6 +52,7 @@ export class MeniuComponent implements OnInit {
     this.showForm1 = formName === 'form1';
     this.showForm2 = formName === 'form2';
     this.showForm3 = formName === 'form3';
+    this.showForm4 = formName ==='form4'
   }
 
   ngOnInit(): void {
