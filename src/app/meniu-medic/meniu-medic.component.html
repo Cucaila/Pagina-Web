@@ -255,7 +255,7 @@
            </div>
            <button type="button" class="button" *ngIf="showButton" (click)="updatePacienti(data.id, data)">Salvare</button>
            <button type="button" class="button" *ngIf="showButton2" (click)="updateFirstStep()">Editare</button>
-           <button type="button" class="stergere" *ngIf="showButton2">Stergere</button>
+           <button type="button" class="stergere" *ngIf="showButton2" (click)="deletePacienti(data.id)">Stergere</button>
       </form>
   </ul>
   </form>
@@ -264,14 +264,63 @@
     <ul *ngFor="let data of ordersData |async">
       <form class="showord">
           <div class="orders">
-          <p>Nume si prenume: {{ data.patientFirstName }}  {{ data.patientLastName }} </p>
-          <p>Medicament: {{ data.medicine }} </p>
-          <p>Comanda efectuata: {{ data.isOrderFinished }}</p>
-          <p>Numar pat: {{ data.bedNumber }}</p>
-          <p>id: {{ data.id }}</p>
+            <div class="titlu">
+              Va rugam completati datele urmatoare:
+            </div>
+            <div class="test">
+              <div>
+                <label>Nume pacient: </label>
+              </div>
+              <div class="test2">
+                <input type="text" [readOnly]="isReadOnly" [value]="data.patientLastName" name="patientLastName" [(ngModel)]="data.patientLastName">
+              </div>  
+              </div>
+              <div class="test">
+                <div>
+                  <label>Prenume pacient: </label>
+                </div>
+                <div class="test2">
+                  <input type="text" [readOnly]="isReadOnly" [value]="data.patientFirstName" name="patientFirstName" [(ngModel)]="data.patientFirstName">
+                </div>  
+            </div>
+            <div class="test">
+              <div>
+                <label>Nume medicament: </label>
+              </div>
+              <div class="test2">
+                <input type="text" [readOnly]="isReadOnly" [value]="data.medicine" name="medicine" [(ngModel)]="data.medicine">
+              </div>   
+            </div>
+        
+            <div class="test">
+              <div>
+                <label>Id: </label>
+              </div>
+              <div class="test2">
+                <input type="text" [readOnly]="isReadOnly" [value]="data.id" name="id" [(ngModel)]="data.id"> 
+              </div>
+            </div>
+        
+            <div class="test">
+              <div>
+                <label>Status:</label>
+              </div>
+              <div class="test2">
+                <input type="text" readOnly [value]="data.isOrderFinished">
+              </div> 
+          </div>
+            <div class="test">
+              <div>
+                <label>Codul patului: </label>
+              </div>
+              <div class="test2">
+                <input type="text" [readOnly]="isReadOnly" [value]="data.bedNumber" name="bedNumber" [(ngModel)]="data.bedNumber">
+              </div>     
+            </div>
            </div>
-           <button type="button" class="button">Editare</button>
-           <button type="button" class="stergere">Stergere</button>
+           <button type="button" class="button" *ngIf="showButton" (click)="updateOrders(data.id, data)">Salvare</button>
+           <button type="button" class="button" *ngIf="showButton2" (click)="updateFirstStep()">Editare</button>
+           <button type="button" class="stergere" *ngIf="showButton2" (click)="deleteComenzi(data.id)">Stergere</button>
       </form>
   </ul>
   </form>
