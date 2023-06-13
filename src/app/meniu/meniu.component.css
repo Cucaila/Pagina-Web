@@ -102,12 +102,12 @@
   }
  
   .button{
-    margin-left: 200px;
+    margin-left: 160px;
     margin-top: 30px;
   }
 
   .stergere{
-    margin-left: 200px;
+    margin-left: 0px;
     background-color: rgb(178, 231, 242);
   }
   .username{
@@ -144,7 +144,7 @@
 }
 .showPat{
   border: 1px solid;
-  width: 40%;
+  width: 30%;
   height: 400px;
   margin-left: 400px;
 }

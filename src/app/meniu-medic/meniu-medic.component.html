@@ -1,6 +1,6 @@
 <div class="tab">
     <button class="tablinks" (click)="showForm('form2')">Adaugare pacient</button>
-    <button class="tablinks" (click)="showForm('form3')">Adaugare tratament</button>
+    <button class="tablinks" (click)="showForm('form3')">Adaugare comanda</button>
     <button class="tablinks" (click)="showForm('form4')">Lista de pacienti</button>
     <button class="tablinks" (click)="showForm('form5')">Comenzi</button> 
   </div>
@@ -95,7 +95,7 @@
     <p *ngIf="isSubmit" class="submitPacient" >{{ submitMessage }}</p>
   </form>
 
-  <form  [formGroup]="contactformTratamente" class="FormAddTratment" *ngIf="showForm3">
+  <form  [formGroup]="contactFormOrders" class="FormAddTratment" *ngIf="showForm3">
     <div class="titlu">
       Va rugam completati datele urmatoare:
     </div>
@@ -104,7 +104,7 @@
         <label>Nume pacient: </label>
       </div>
       <div class="test2">
-        <input type="text" formControlName="nume">
+        <input type="text" formControlName="patientLastName">
       </div>  
       </div>
       <div class="test">
@@ -112,7 +112,7 @@
           <label>Prenume pacient: </label>
         </div>
         <div class="test2">
-          <input type="text" formControlName="prenume">
+          <input type="text" formControlName="patientFirstName">
         </div>  
     </div>
     <div class="test">
@@ -120,40 +120,40 @@
         <label>Nume medicament: </label>
       </div>
       <div class="test2">
-        <input type="text" formControlName="numeMedicament">
+        <input type="text" formControlName="medicine">
       </div>   
     </div>
 
     <div class="test">
       <div>
-        <label>Administrare: </label>
+        <label>Id: </label>
       </div>
       <div class="test2">
-        <input type="text" formControlName="administrare"> 
+        <input type="text" formControlName="id"> 
       </div>
     </div>
 
     <div class="test">
       <div>
-        <label for="durata">Durata tratamentului: </label>
+        <label>Status:</label>
       </div>
       <div class="test2">
-        <input type="text" formControlName="durataTratament">
-      </div>
-    </div>
+        <input type="text" formControlName="isOrderFinished">
+      </div> 
+  </div>
     <div class="test">
       <div>
         <label>Codul patului: </label>
       </div>
       <div class="test2">
-        <input type="text" formControlName="codPat">
+        <input type="text" formControlName="bedNumber">
       </div>     
     </div>
-    <div class="test">
+    <!-- <div class="test">
       <label for="com">Comanda directa: </label>
       <input type="checkbox" formControlName="comanda">
-    </div>
-    <button type="reset" [disabled]="contactformTratamente.invalid" class="button" (click)="submitAddTratament(contactformTratamente.value)">Submit</button>
+    </div> -->
+    <button type="reset" [disabled]="contactFormOrders.invalid" class="button" (click)="submitAddOrders(contactFormOrders.value)">Submit</button>
     <p *ngIf="isSubmit" class="submitTratament" >{{ submitMessage }}</p>
   </form>
 

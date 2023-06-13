@@ -1,10 +1,10 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { Firestore, collection, collectionData, doc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc } from '@angular/fire/firestore';
 
 import { Observable } from 'rxjs/internal/Observable';
-import { deleteDoc } from 'firebase/firestore';
+import { CollectionReference, deleteDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app',
@@ -23,11 +23,11 @@ export class MeniuComponent implements OnInit {
   username: string='';
   password: string='';
 
-  // contactForm!: FormGroup;
+  contactForm!: FormGroup;
   isSubmit = true;
   submitMessage='';
 
-  // private myform!: CollectionReference<any>;
+  private myform!: CollectionReference<any>;
   userData!: Observable<any[]>;
 
   // private myformPacienti!: CollectionReference<any>;
@@ -40,7 +40,7 @@ export class MeniuComponent implements OnInit {
   // usData!: Observable<any[]>
   // contactformTratament!: FormGroup;
 
-  constructor(private auth: AuthService, private firestore: Firestore){
+  constructor(private auth: AuthService, private firestore: Firestore, private formBuilder: FormBuilder){
     this.getDocument();
     this.getPacientDocument();
     // this.getTratmentDocument();
@@ -55,14 +55,14 @@ export class MeniuComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.myform = collection(this.firestore, 'medici');
+    this.myform = collection(this.firestore, 'medici');
 
-    // this.contactForm = this.formBuilder.group({
-    //   nume:[null,Validators.required],
-    //   prenume:[null,Validators.required],
-    //   departament:[null,Validators.required],
-    //   varsta:[null,[Validators.required]]
-    // });
+    this.contactForm = this.formBuilder.group({
+      nume:[null,Validators.required],
+      prenume:[null,Validators.required],
+      departament:[null,Validators.required],
+      varsta:[null,[Validators.required]]
+    });
 
     // this.myformPacienti = collection(this.firestore, 'pacienti');
 
@@ -127,19 +127,19 @@ export class MeniuComponent implements OnInit {
            }, 8000);
   }
 
-  // submitAddMedic(value: any){
-  // addDoc(this.myform, value)
-  //     .then(() => {
-  //       this.submitMessage = 'Submitted Successfully!';
-  //       this.isSubmit = true;
-  //       setTimeout(() => {
-  //         this.isSubmit = false;
-  //       }, 8000);
-  //     })
-  //     .catch((err: any) => {
-  //       console.log(err);
-  //     });
-  // }
+  submitAddMedic(value: any){
+  addDoc(this.myform, value)
+      .then(() => {
+        this.submitMessage = 'Submitted Successfully!';
+        this.isSubmit = true;
+        setTimeout(() => {
+          this.isSubmit = false;
+        }, 8000);
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
+  }
 
   getDocument(): void {
     const CollectionInstance = collection(this.firestore, 'medici');
@@ -150,22 +150,6 @@ export class MeniuComponent implements OnInit {
 
     this.userData = collectionData(CollectionInstance, {idField: 'id' });
   }
-
-//   submitAddPacient(value: any){
-//     console.log(value);
- 
-//     addDoc(this.myformPacienti, value)
-//     .then(() => {
-//       this.submitMessage = 'Submitted Successfully!';
-//       this.isSubmit = true;
-//       setTimeout(() => {
-//         this.isSubmit = false;
-//       }, 8000);
-//     })
-//     .catch((err: any) => {
-//       console.log(err);
-//     });
-// }
 
 getPacientDocument(): void {
   const CollectionInstance = collection(this.firestore, 'pacienti');

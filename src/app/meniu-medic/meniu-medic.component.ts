@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CollectionReference, Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { CollectionReference, DocumentReference, Firestore, addDoc, collection, collectionData, setDoc } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { Pacient } from '../pacient.model';
+
 
 @Component({
   selector: 'app',
@@ -16,9 +17,12 @@ export class MeniuMedicComponent implements OnInit{
   showForm4 = false;
   showForm5 = false;
 
+  myDocOrders! : DocumentReference<any>;
+
   myFormOrders! : CollectionReference<any>;
   contactFormOrders!: FormGroup;
   ordersData!: Observable<any[]>;
+  orderId!: Observable<any[]>;
 
   contactformPacienti!: FormGroup;
   isSubmit = true;
@@ -63,18 +67,6 @@ export class MeniuMedicComponent implements OnInit{
       
     });
 
-    this.myformTratament = collection(this.firestore, 'tratamente');
-
-    this.contactformTratamente = this.formBuilder.group({
-      nume: [null, Validators.required],
-      prenume : [null, Validators.required],
-      numeMedicament : [null, Validators.required],
-      administrare : [null, Validators.required],
-      durataTratament : [null, Validators.required],
-      codPat : [null, Validators.required],
-      // comanda : [null, Validators.required],
-    });
-
     this.myFormOrders = collection(this.firestore, 'orders');
 
     this.contactFormOrders = this.formBuilder.group({
@@ -88,7 +80,7 @@ export class MeniuMedicComponent implements OnInit{
   }
   submitAddPacient(value: any){
     console.log(value);
- 
+    
     addDoc(this.myformPacienti, value)
     .then(() => {
       this.submitMessage = 'Submitted Successfully!';
@@ -112,9 +104,9 @@ getPacientDocument(): void {
   this.userData = collectionData(CollectionInstance);
 }
 
-submitAddTratament(value: any) {
+submitAddOrders(value: any) {
   console.log(value);
-  addDoc(this.myformTratament, value)
+  addDoc(this.myFormOrders, value)
     .then(() => {
       this.submitMessage = 'Submitted Successfully!';
       this.isSubmit = true;
@@ -127,16 +119,6 @@ submitAddTratament(value: any) {
     });
 }
 
-getTratmentDocument(): void {
-  const CollectionInstance = collection(this.firestore, 'tratamente');
-  collectionData(CollectionInstance)
-  .subscribe(value => {
-    console.log(value)
-  });
-
-  this.userData = collectionData(CollectionInstance);
-}
-
 getOrders():void{
   const CollectionInstance = collection(this.firestore, 'orders');
   collectionData(CollectionInstance, {idField: 'id'})
@@ -145,6 +127,7 @@ getOrders():void{
   });
 
   this.ordersData = collectionData(CollectionInstance, {idField: 'id'});
+  console.log(this.ordersData);
 }
 
 }
