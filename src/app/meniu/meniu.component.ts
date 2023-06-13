@@ -2,7 +2,6 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Firestore, addDoc, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore';
-
 import { Observable } from 'rxjs/internal/Observable';
 import { CollectionReference, deleteDoc } from '@angular/fire/firestore';
 
@@ -235,6 +234,9 @@ getPacientDocument(): void {
       console.log(err);
     });
   }
-
+ 
+  logout(){
+    this.auth.logout();
+  }
 }
 

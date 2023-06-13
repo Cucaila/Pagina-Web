@@ -96,4 +96,8 @@
 <button type="reset" [disabled]="contactForm.invalid" class="button" (click)="submitAddMedic(contactForm .value)">Submit</button>
 <p *ngIf="isSubmit" class="submitMedic" >{{ submitMessage }}</p>
 </form>
+
+<div class="button-container">
+<button class="logoutButton" (click)="logout()">LogOut</button>
+</div>
   

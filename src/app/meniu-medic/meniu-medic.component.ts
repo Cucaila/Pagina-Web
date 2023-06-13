@@ -3,6 +3,7 @@ import { CollectionReference, DocumentReference, Firestore, addDoc, collection, 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { Pacient } from '../pacient.model';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -44,7 +45,7 @@ export class MeniuMedicComponent implements OnInit{
   private myformTratament!: CollectionReference<any>;
   tratamente!: Observable<any[]>;
   
-  constructor(private formBuilder: FormBuilder, private firestore: Firestore){
+  constructor(private formBuilder: FormBuilder, private firestore: Firestore, private auth: AuthService){
     this.getPacientDocument();
     this.getOrders();
   }
@@ -180,5 +181,7 @@ updatePacienti(id3: string, value: any){
   this.showButton = false;
   this.showButton2 = true;
 }
-
+logout(){
+  this.auth.logout();
+}
 }

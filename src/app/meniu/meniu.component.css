@@ -154,3 +154,9 @@
   margin-top: 40px;
   font-weight: 500;
 }
+.logoutButton{
+ margin-right: 80px;
+}
+.button-container {
+  text-align: right;
+}

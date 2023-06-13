@@ -1,10 +1,10 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { FirebaseApp } from '@angular/fire/app';
 import { collectionData, getDocs, query, where } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CollectionReference, Firestore, collection } from '@angular/fire/firestore';
 import { Observable, filter, of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app',
@@ -25,7 +25,7 @@ export class MeniuPacientComponent implements OnInit{
   nume: string='';
   prenume:string='';
 
-  constructor(private db: Firestore, private route: ActivatedRoute){
+  constructor(private db: Firestore, private route: ActivatedRoute,private auth: AuthService){
   }
 
   ngOnInit(): void {
@@ -54,5 +54,8 @@ export class MeniuPacientComponent implements OnInit{
       console.log(filteredData);
       this.pacientData = of(filteredData);
     });
+  }
+  logout(){
+    this.auth.logout();
   }
 }
