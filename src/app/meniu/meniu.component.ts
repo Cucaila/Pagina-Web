@@ -20,6 +20,10 @@ export class MeniuComponent implements OnInit {
   showForm3 = false;
   showForm4 = false;
 
+  isReadOnly: boolean=true;
+  showButton = false;
+  showButton2 = true;
+
   username: string='';
   password: string='';
 
@@ -200,6 +204,12 @@ getPacientDocument(): void {
   //   );
   // }
 
+  updateFirstStep(){
+    this.isReadOnly = false;
+    this.showButton = true;
+    this.showButton2 = false;
+  }
+
   deletePacienti(id1: string){
     const docInstance = doc(this.firestore, 'pacienti', id1);
     deleteDoc(docInstance)
@@ -233,6 +243,10 @@ getPacientDocument(): void {
     .catch((err)=>{
       console.log(err);
     });
+
+    this.isReadOnly = true;
+    this.showButton = false;
+    this.showButton2 = true;
   }
  
   logout(){
