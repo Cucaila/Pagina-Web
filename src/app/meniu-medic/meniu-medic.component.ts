@@ -23,6 +23,7 @@ export class MeniuMedicComponent implements OnInit{
 
   ordersId : number = 0;
   isReadOnly: boolean=true;
+  cnp: string = '';
 
   myDocOrders! : DocumentReference<any>;
 
@@ -225,5 +226,9 @@ deleteComenzi(id2: string){
 
 logout(){
   this.auth.logout();
+}
+isCNPValid(): boolean {
+  const cnpPattern = /^[0-9]{13}$/;
+  return cnpPattern.test(this.cnp);
 }
 }

@@ -201,7 +201,10 @@
       
           <div class="test">
             <div>
-              <label>CNP: </label>
+              <label name="cnpLabel">CNP: </label>
+            </div>
+            <div *ngIf="!isCNPValid()" class="error-message">
+              Invalid CNP.
             </div>
             <div class="test2">
               <input type="text"[readonly]="isReadOnly"[value]="data.cnp" name="cnp" [(ngModel)]="data.cnp">
