@@ -159,19 +159,103 @@
 
   <form *ngIf="showForm4" class="showPatients">
     <ul *ngFor="let data of userData |async">
-      <form class="showMed">
+      <form  class="showMed">
           <div class="pacienti">
-          <p>Nume si prenume: {{ data.nume }}  {{ data.prenume }} </p>
+          <!-- <p>Nume si prenume: {{ data.nume }}  {{ data.prenume }} </p>
           <p>Varsta: {{ data.varsta }} </p>
           <p>CNP: {{ data.cnp }}</p>
           <p>Adresa: {{ data.adresa }}</p>
           <p>Numar de contact: {{ data.numarDeTelefon }}</p>
           <p>Adresa de email: {{ data.email }}</p>
           <p>Profesie: {{data.profesie }}</p>
-          <p>Loc de munca: {{data.locDeMunca }}</p>
+          <p>Loc de munca: {{data.locDeMunca }}</p> -->
+          <div class="titlu">
+            Va rugam completati datele urmatoare:
+          </div>
+          <div class="test">
+            <div>
+              <label>Nume: </label>
+            </div>
+           <div class="test2">
+            <input type="text" [readonly]="isReadOnly" [value]="data.nume" name="nume" [(ngModel)]="data.nume">
            </div>
-      <button type="button" class="button">Editare</button>
-      <button type="button" class="stergere">Stergere</button>
+          </div>
+      
+          <div class="test">
+            <div>
+              <label>Prenume: </label>
+            </div>
+            <div class="test2">
+              <input type="text" [readonly]="isReadOnly" [value]="data.prenume"  name="prenume" [(ngModel)]="data.prenume">
+            </div>
+          </div>
+      
+          <div class="test">
+            <div>
+              <label>Varsta: </label>
+            </div>
+            <div class="test2">
+              <input type="number"[readonly]="isReadOnly" [value]="data.varsta" name="varsta" [(ngModel)]="data.varsta">
+            </div>
+          </div>
+      
+          <div class="test">
+            <div>
+              <label>CNP: </label>
+            </div>
+            <div class="test2">
+              <input type="text"[readonly]="isReadOnly"[value]="data.cnp" name="cnp" [(ngModel)]="data.cnp">
+            </div>
+          </div>
+      
+          <div class="test">
+            <div>
+              <label>Adresa: </label>
+            </div>
+            <div class="test2">
+              <input type="text" [readonly]="isReadOnly" [value]="data.adresa" name="adresa" [(ngModel)]="data.adresa">
+            </div>  
+          </div>
+      
+          <div class="test">
+              <div>
+                <label>Adresa de email: </label>
+              </div>
+              <div class="test2">
+                <input type="email" [readonly]="isReadOnly"[value]="data.email" name="email" [(ngModel)]="data.email">
+              </div>   
+            </div>
+      
+            <div class="test">
+              <div>
+                <label>Numar de telefon: </label>
+              </div>
+              <div class="test2">
+                <input type="text" [readonly]="isReadOnly"[value]="data.numarDeTelefon" name="numarDeTelefon" [(ngModel)]="data.numarDeTelefon" >
+              </div>   
+            </div>
+      
+          <div class="test">
+            <div>
+              <label>Profesie: </label>
+            </div>
+            <div class="test2">
+              <input type="text" [readonly]="isReadOnly" [value]="data.profesie" name="profesie" [(ngModel)]="data.profesie">
+            </div>    
+          </div>
+      
+          <div class="test">
+            <div>
+              <label>Loc de munca: </label>
+            </div>
+            <div class="test2">
+              <input type="text" [readonly]="isReadOnly" [value]="data.locDeMunca" name="locDeMunca" [(ngModel)]="data.locDeMunca">
+            </div>    
+          </div>
+           </div>
+           <button type="button" class="button" *ngIf="showButton" (click)="updatePacienti(data.id, data)">Salvare</button>
+           <button type="button" class="button" *ngIf="showButton2" (click)="updateFirstStep()">Editare</button>
+           <button type="button" class="stergere" *ngIf="showButton2">Stergere</button>
       </form>
   </ul>
   </form>
@@ -186,8 +270,8 @@
           <p>Numar pat: {{ data.bedNumber }}</p>
           <p>id: {{ data.id }}</p>
            </div>
-      <button type="button" class="button">Editare</button>
-      <button type="button" class="stergere">Stergere</button>
+           <button type="button" class="button">Editare</button>
+           <button type="button" class="stergere">Stergere</button>
       </form>
   </ul>
   </form>

@@ -31,7 +31,7 @@
         <p>Departament: {{ medici.departament }} </p>
         <p>Varsta: {{ medici.varsta }} </p>
         </div>
-        <button type="button" class="button">Editare</button>
+        <button type="button" class="button" (click)="updateMedici(medici.id, medici.value)">Editare</button>
         <button type="button" class="stergere" (click)="deleteMedici(medici.id)">Stergere</button>
         </form>
     </ul>
@@ -50,7 +50,6 @@
           <p>Profesie: {{data.profesie }}</p>
           <p>Loc de munca: {{data.locDeMunca }}</p>
            </div>
-      <button type="button" class="button">Editare</button>
       <button type="button" class="stergere" (click)="deletePacienti(data.id)">Stergere</button>
       </form>
   </ul>

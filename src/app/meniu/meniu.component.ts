@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { Firestore, addDoc, collection, collectionData, doc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore';
 
 import { Observable } from 'rxjs/internal/Observable';
 import { CollectionReference, deleteDoc } from '@angular/fire/firestore';
@@ -215,6 +215,25 @@ getPacientDocument(): void {
     .then(()=> {
       console.log('Data deleted');
     })
+  }
+
+  updateMedici(id3: string, value: any){
+    const docInstance = doc(this.firestore, 'medici', id3);
+    const updateDataPac=
+    {
+      nume: value.nume,
+      prenume : value.prenume,
+      departament: value.departament,
+      varsta : value.varsta
+    }
+
+    updateDoc(docInstance, updateDataPac)
+    .then(()=> {
+      console.log('data updated');
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
   }
 
 }
