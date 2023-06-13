@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CollectionReference, DocumentReference, Firestore, addDoc, collection, collectionData, setDoc } from '@angular/fire/firestore';
+import { CollectionReference, DocumentReference, Firestore, addDoc, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { Pacient } from '../pacient.model';
@@ -17,12 +17,13 @@ export class MeniuMedicComponent implements OnInit{
   showForm4 = false;
   showForm5 = false;
 
+  ordersId : number = 0;
+
   myDocOrders! : DocumentReference<any>;
 
   myFormOrders! : CollectionReference<any>;
   contactFormOrders!: FormGroup;
   ordersData!: Observable<any[]>;
-  orderId!: Observable<any[]>;
 
   contactformPacienti!: FormGroup;
   isSubmit = true;
@@ -106,17 +107,27 @@ getPacientDocument(): void {
 
 submitAddOrders(value: any) {
   console.log(value);
-  addDoc(this.myFormOrders, value)
-    .then(() => {
-      this.submitMessage = 'Submitted Successfully!';
-      this.isSubmit = true;
-      setTimeout(() => {
-        this.isSubmit = false;
-      }, 8000);
-    })
-    .catch((err: any) => {
-      console.log(err);
-    });
+  this.ordersId=value.id;
+  setDoc(doc(this.firestore, 'orders', this.ordersId.toString()),{
+    bedNumber: value.bedNumber,
+      id: value.id,
+      isOrderFinished: value.isOrderFinished,
+      medicine: value.medicine,
+      patientFirstName: value.patientFirstName,
+      patientLastName: value.patientLastName
+  });
+  // addDoc(this.myFormOrders, value)
+  //   .then(() => {
+  //     this.submitMessage = 'Submitted Successfully!';
+  //     this.isSubmit = true;
+  //     setTimeout(() => {
+  //       this.isSubmit = false;
+  //     }, 8000);
+  //   })
+  //   .catch((err: any) => {
+  //     console.log(err);
+  //   });
+
 }
 
 getOrders():void{
