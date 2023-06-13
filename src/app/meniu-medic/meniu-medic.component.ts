@@ -111,7 +111,7 @@ submitAddOrders(value: any) {
   setDoc(doc(this.firestore, 'orders', this.ordersId.toString()),{
     bedNumber: value.bedNumber,
       id: value.id,
-      isOrderFinished: value.isOrderFinished,
+      isOrderFinished: false,
       medicine: value.medicine,
       patientFirstName: value.patientFirstName,
       patientLastName: value.patientLastName
