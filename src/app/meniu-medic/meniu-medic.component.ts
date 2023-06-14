@@ -122,18 +122,6 @@ submitAddOrders(value: any) {
       patientFirstName: value.patientFirstName,
       patientLastName: value.patientLastName
   });
-  // addDoc(this.myFormOrders, value)
-  //   .then(() => {
-  //     this.submitMessage = 'Submitted Successfully!';
-  //     this.isSubmit = true;
-  //     setTimeout(() => {
-  //       this.isSubmit = false;
-  //     }, 8000);
-  //   })
-  //   .catch((err: any) => {
-  //     console.log(err);
-  //   });
-
 }
 
 getOrders():void{
@@ -226,9 +214,5 @@ deleteComenzi(id2: string){
 
 logout(){
   this.auth.logout();
-}
-isCNPValid(): boolean {
-  const cnpPattern = /^[0-9]{13}$/;
-  return cnpPattern.test(this.cnp);
 }
 }

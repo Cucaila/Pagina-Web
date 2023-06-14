@@ -33,21 +33,11 @@ export class MeniuComponent implements OnInit {
 
   private myform!: CollectionReference<any>;
   userData!: Observable<any[]>;
-
-  // private myformPacienti!: CollectionReference<any>;
-  // pacienti!: Observable<any[]>;
   usrData!: Observable<any[]>
-  // contactformPacienti!: FormGroup;
-
-  // private myformTratament!: CollectionReference<any>;
-  // tratamente!: Observable<any[]>;
-  // usData!: Observable<any[]>
-  // contactformTratament!: FormGroup;
 
   constructor(private auth: AuthService, private firestore: Firestore, private formBuilder: FormBuilder){
     this.getDocument();
     this.getPacientDocument();
-    // this.getTratmentDocument();
   }
   
 
@@ -68,44 +58,6 @@ export class MeniuComponent implements OnInit {
       departament:[null,Validators.required],
       varsta:[null,[Validators.required]]
     });
-
-    // this.myformPacienti = collection(this.firestore, 'pacienti');
-
-    // this.contactformPacienti = this.formBuilder.group({
-    //   nume: [null, Validators.required],
-    //   prenume : [null, Validators.required],
-    //   medic : [null, Validators.required],
-    //   varsta : [null, Validators.required],
-    //   cnp : [null, Validators.required],
-    //   adresa : [null, Validators.required],
-    //   profesie : [null, Validators.required],
-    //   locDeMunca : [null, Validators.required],
-    //   numarDeTelefon : [null, Validators.required]
-    // });
-
-    // this.myformTratament = collection(this.firestore, 'tratamente');
-
-    // this.contactformTratament = this.formBuilder.group({
-    //   nume: [null, Validators.required],
-    //   prenume : [null, Validators.required],
-    //   numeMedicament : [null, Validators.required],
-    //   administrare : [null, Validators.required],
-    //   durataTratament : [null, Validators.required],
-    //   codPat : [null, Validators.required],
-    //   // comanda : [null, Validators.required],
-    // });
-   
-
-  //   this.medici = this.myform.snapshotChanges().pipe(
-  //     map((actions) => {
-  //       return actions.map((a) => {
-  //         const data = a.payload.doc.data() as Medic;
-  //         const id = a.payload.doc.id;
-  //         return { id, ...data };
-  //       });
-  //     })
-  //   );
-  // }
   }
 
   register(){
@@ -114,15 +66,15 @@ export class MeniuComponent implements OnInit {
       return;
     }
     
-    if(this.username==''){
+    else if(this.username==''){
       alert('Introduceti numele de utilizator!');
       return;
     }
-    if(this.password==''){
+    else if(this.password==''){
       alert('Introduceti parola!');
       return;
-    }
-    this.auth.register(this.username, this.password);
+    } else{
+    this.auth.register(this.username, this.password)
     this.username='';
     this.password='';
     this.submitMessage = 'Submitted Successfully!';
@@ -130,6 +82,7 @@ export class MeniuComponent implements OnInit {
            setTimeout(() => {
              this.isSubmit = false;
            }, 8000);
+          }
   }
 
   submitAddMedic(value: any){
@@ -165,44 +118,6 @@ getPacientDocument(): void {
 
   this.usrData = collectionData(CollectionInstance, {idField: 'id' });
 }
-
-// submitAddTratament(value: any) {
-//   console.log(value);
-//   addDoc(this.myformTratament, value)
-//     .then(() => {
-//       this.submitMessage = 'Submitted Successfully!';
-//       this.isSubmit = true;
-//       setTimeout(() => {
-//         this.isSubmit = false;
-//       }, 8000);
-//     })
-//     .catch((err: any) => {
-//       console.log(err);
-//     });
-// }
-
-// getTratmentDocument(): void {
-//   const CollectionInstance = collection(this.firestore, 'tratamente');
-//   collectionData(CollectionInstance)
-//   .subscribe(value => {
-//     console.log(value)
-//   });
-
-//   this.userData = collectionData(CollectionInstance);
-// }
-  
-
-  // getMedici(): Observable<any[]> {
-  //   return this.myform.get().pipe(
-  //     map((querySnapshot: QuerySnapshot<Medic>) => {
-  //       const medici: Medic[] = [];
-  //       querySnapshot.forEach((doc) => {
-  //         medici.push(doc.data());
-  //       });
-  //       return medici;
-  //     })
-  //   );
-  // }
 
   updateFirstStep(){
     this.isReadOnly = false;

@@ -31,16 +31,9 @@ export class AuthService {
   //register method
   register(username: string, password: string){
     this.fireauth.createUserWithEmailAndPassword(username, password).then(()=>{
-      // if(this.checkIfPacientUsername(username)){
-      //   this.router.navigate(['/login/meniu-pacient'], { queryParams: { myString: username } });
-      // }else if(this.checkIfMedicUsername(username)){
-      //   this.router.navigate(['/login/meniu-medic'], { queryParams: { myString: username } });
-      // }else{
-      //   this.router.navigate(['/login/meniu']);
-      // }
     }, err=>{
         alert('Date existente sau introduse gresit!!');
-        this.router.navigate(['/login']);
+        // this.router.navigate(['/login']);
     })
   }
 
